@@ -11,48 +11,34 @@
     "details": "ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library records every granular transformation applied to your pandas DataFrame. Features include Full Audit Trail, Reproducibility checks, and Visualization of the preprocessing pipeline."
   },
   {
-    "id": "creditworthiness",
-    "title": "Project Creditworthiness",
-    "description": "A production grade credit scoring model using XGBoost and adaptive SHAP explanations.",
+    "id": "dataml",
+    "title": "Shiny Applications Suite",
+    "description": "A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization, and decision-making.",
     "tech_stack": [
-      "Python",
-      "XGBoost",
-      "Flask"
+      "R",
+      "Shiny",
+      "bslib",
+      "Plotly",
+      "Leaflet"
     ],
-    "details": "This project focuses on developing a robust and interpretable credit scoring model. The primary goal is to assess the creditworthiness of loan applicants with high accuracy while providing clear, human-understandable explanations for each decision. We utilize the XGBoost algorithm, known for its performance in competitive machine learning, and integrate it with SHAP (SHapley Additive exPlanations) to ensure model transparency. The entire solution is deployed as a microservice using Flask, making it easy to integrate with existing banking and financial systems. The model is trained on a diverse dataset of historical loan data, and extensive feature engineering is performed to capture complex relationships between applicant attributes and default risk."
+    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations."
   },
   {
-    "id": "carbon_capture",
-    "title": "Project Carbon Capture",
-    "description": "AI-driven optimization for carbon capture technologies.",
+    "id": "blockchain_ai",
+    "title": "Federated Learning with Blockchain & IPFS",
+    "description": "A decentralized, auditable, and transparent AI training ecosystem.",
     "tech_stack": [
-      "Python",
-      "PyTorch",
-      "Gekko"
-    ],
-    "details": "This project aims to accelerate the development and efficiency of carbon capture and storage (CCS) technologies using artificial intelligence. We are developing a digital twin of a carbon capture process plant, which allows us to simulate and optimize operations in a virtual environment. The core of the project is a deep reinforcement learning agent that learns to control the capture process in real-time to maximize CO2 absorption while minimizing energy consumption. The Gekko optimization suite is used for dynamic optimization and control of the complex chemical processes involved. The ultimate goal is to create a scalable and cost-effective AI solution that can be deployed in real-world carbon capture facilities to help combat climate change."
-  },
-  {
-    "id": "supply_chain",
-    "title": "Project Supply Chain",
-    "description": "Optimization of supply chain logistics using AI.",
-    "tech_stack": [
-      "Python",
       "TensorFlow",
-      "OR-Tools"
+      "Scikit-learn",
+      "Flower",
+      "FastAPI",
+      "Flask",
+      "Docker",
+      "Ethereum",
+      "IPFS",
+      "Streamlit"
     ],
-    "details": "This project tackles the complex challenge of supply chain optimization through the application of AI and operations research. We are building a system that provides real-time visibility and predictive insights into supply chain operations. The system uses a combination of machine learning models to forecast demand, predict potential disruptions (e.g., shipping delays, supplier issues), and recommend optimal inventory levels. Google's OR-Tools is used to solve large-scale routing and scheduling problems, ensuring that goods are transported efficiently. The project's architecture is based on a microservices approach, allowing for scalability and easy integration with existing enterprise resource planning (ERP) systems. The result is a more resilient, efficient, and sustainable supply chain."
-  },
-  {
-    "id": "biodiversity_ai",
-    "title": "Project Biodiversity AI",
-    "description": "AI for monitoring and preserving biodiversity.",
-    "tech_stack": [
-      "Python",
-      "PyTorch",
-      "OpenCV"
-    ],
-    "details": "This project leverages AI to automate the process of monitoring wildlife populations and assessing biodiversity from camera trap images and acoustic data. We are developing and training deep learning models, specifically convolutional neural networks (CNNs) for image analysis and recurrent neural networks (RNNs) for audio analysis, to automatically identify and classify different species. This automates a task that is traditionally manual and time-consuming for ecologists. The system can process vast amounts of data to provide near real-time insights into species distribution, population dynamics, and habitat health. This data is crucial for conservation efforts, helping to protect endangered species and preserve natural ecosystems."
+    "details": "This project integrates Federated Learning (FL) with Blockchain and IPFS to create a decentralized, auditable, and transparent AI training ecosystem. The system ensures that local data from different clients (e.g., stores, hospitals, IoT devices) remains private, while model updates are aggregated securely on a central node. Each aggregation round is recorded on the Ethereum blockchain for transparency, and the aggregated global model is stored on IPFS for decentralized access."
   },
   {
     "id": "paper_adversarial_cybersecurity",
@@ -97,23 +83,6 @@
       "CadCAD"
     ],
     "details": "This research uses agent-based modeling (ABM) to simulate and analyze systemic risks in the decentralized finance (DeFi) ecosystem. We create a simulated environment populated by autonomous agents representing different DeFi participants (e.g., liquidity providers, traders, arbitrageurs). Using frameworks like Mesa and CadCAD, we model their behaviors and interactions within various DeFi protocols. The simulation allows us to stress-test protocols under extreme market conditions and identify potential cascading failures, flash loan exploits, and other vulnerabilities that are difficult to predict with traditional analytical models. The paper presents insights into the complex dynamics of DeFi and proposes new risk management strategies for building a more stable and secure decentralized financial system."
-  },
-  {
-    "id": "blockchain_ai",
-    "title": "Federated Learning with Blockchain & IPFS",
-    "description": "A decentralized, auditable, and transparent AI training ecosystem.",
-    "tech_stack": [
-      "TensorFlow",
-      "Scikit-learn",
-      "Flower",
-      "FastAPI",
-      "Flask",
-      "Docker",
-      "Ethereum",
-      "IPFS",
-      "Streamlit"
-    ],
-    "details": "This project integrates Federated Learning (FL) with Blockchain and IPFS to create a decentralized, auditable, and transparent AI training ecosystem. The system ensures that local data from different clients (e.g., stores, hospitals, IoT devices) remains private, while model updates are aggregated securely on a central node. Each aggregation round is recorded on the Ethereum blockchain for transparency, and the aggregated global model is stored on IPFS for decentralized access."
   },
   {
     "id": "paper_fair_explainable_credit",

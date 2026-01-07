@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Audit Library</title>
+    <title>Shiny Applications Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -13,8 +13,8 @@
     <header>
         <div class="header-container">
             <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4"
-                    alt="Profile Picture" class="profile-picture">
+                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture"
+                    class="profile-picture">
                 <div class="header-text">
                     <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
                         <h1>Shivogo John</h1>
@@ -39,30 +39,41 @@
 
     <section id="project-details">
 
-        <h1>ML Audit Library</h1>
-        <p><strong>Solves Data Lineage Blindness by tracking granular preprocessing steps.</strong></p>
+        <h1>Shiny Applications Suite</h1>
+        <p><strong>A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization,
+                and decision-making.</strong></p>
 
-        <p>ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data
-            preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library
-            records every granular transformation applied to your pandas DataFrame.</p>
+        <p>This suite demonstrates the power of R Shiny for building full-stack data science applications. It includes
+            tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and
+            quality control. All apps feature a consistent, modern UI using bslib and are deployed for real-time
+            interaction.</p>
 
-        <h3>Key Features</h3>
+        <h3>All 8 Applications</h3>
         <ul>
-            <li><strong>Full Audit Trail:</strong> Automatically logs every step (Imputation, Scaling, Encoding, etc.)
-                into a JSON audit file.</li>
-            <li><strong>Reproducibility:</strong> Verify if your data pipeline produces the exact same result every time
-                using hash validation.</li>
-            <li><strong>Visualization:</strong> Auto-generates an interactive HTML timeline of your preprocessing steps.
-            </li>
+            <li><strong>1. Business Analytics Dashboard:</strong> Track sales, KPIs, and customer churn with interactive
+                visualizations.</li>
+            <li><strong>2. Data Explorer:</strong> Upload and explore datasets with dynamic visualizations and filtering
+                capabilities.</li>
+            <li><strong>3. Statistical Lab:</strong> Interactive tools for A/B testing, confidence intervals, regression
+                analysis, and distribution visualization.</li>
+            <li><strong>4. Model Deployment Hub:</strong> Deploy and test machine learning models (Random Forest, Linear
+                Regression) with interactive predictions.</li>
+            <li><strong>5. Financial Analysis Suite:</strong> Portfolio optimization, ARIMA/ETS forecasting, and Value
+                at Risk (VaR) analysis.</li>
+            <li><strong>6. Geospatial Explorer:</strong> Interactive maps of Kenya with clustering, heatmaps, and
+                choropleth visualizations.</li>
+            <li><strong>7. Quality Control Monitor:</strong> Real-time SPC charts, process capability analysis (Cp,
+                Cpk), and manufacturing quality monitoring.</li>
+            <li><strong>8. Survey Analyzer:</strong> Analyze survey data with Net Promoter Score (NPS), satisfaction
+                metrics, and downloadable reports.</li>
         </ul>
 
         <div style="margin-top: 20px;">
-            <a href="https://github.com/SHIVOGOJOHN/ml_audit" class="btn" target="_blank"><i class="fab fa-github"></i>
+            <a href="https://github.com/SHIVOGOJOHN/dataml" class="btn" target="_blank"><i class="fab fa-github"></i>
                 View on GitHub</a>
-            <a href="https://pypi.org/project/ml-audit/" class="btn" target="_blank"><i class="fas fa-box-open"></i>
-                View on PyPI</a>
-            <a href="https://mlaudit.onrender.com" class="btn" target="_blank"><i class="fas fa-book"></i> View
-                Documentation</a>
+            <a href="https://datamlproject.shinyapps.io/shiny-apps-launcher/" class="btn" target="_blank"><i
+                    class="fas fa-rocket"></i>
+                Launch Apps</a>
         </div>
 
     </section>

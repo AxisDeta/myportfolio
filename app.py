@@ -22,7 +22,7 @@ research_data = [item for item in all_data if item['id'].startswith('paper_')]
 def index():
     projects_to_display = [
         next((p for p in projects_data if p['id'] == 'blockchain_ai'), None),
-        next((p for p in projects_data if p['id'] == 'creditworthiness'), None)
+        next((p for p in projects_data if p['id'] == 'ml_audit'), None)
     ]
     projects_to_display = [p for p in projects_to_display if p]
 
@@ -115,9 +115,13 @@ def ask_ai():
 
 @app.route('/projects')
 def all_projects():
-    for p in projects_data:
+    # Filter for specific projects only
+    allowed_projects = ['blockchain_ai', 'ml_audit', 'dataml']
+    filtered_projects = [p for p in projects_data if p['id'] in allowed_projects]
+    
+    for p in filtered_projects:
         p['details_page'] = 'project_' + p['id'] if not p['id'].startswith('project_') else p['id']
-    return render_template('projects.html', projects=projects_data)
+    return render_template('projects.html', projects=filtered_projects)
 
 @app.route('/research')
 def all_research():
@@ -133,41 +137,17 @@ def project_blockchain_ai():
 def project_default():
     return render_template('project_default.html')
 
-@app.route('/project/sme_twins')
-def project_sme_twins():
-    return render_template('project_sme_twins.html')
+
 
 @app.route('/project/ml_audit')
 def project_ml_audit():
     return render_template('project_ml_audit.html')
 
-@app.route('/project/creditworthiness')
-def project_creditworthiness():
-    return render_template('project_creditworthiness.html')
+@app.route('/project/dataml')
+def project_dataml():
+    return render_template('project_dataml.html')
 
-@app.route('/project/self_healing')
-def project_self_healing():
-    return render_template('project_self_healing.html')
 
-@app.route('/project/supply_chain')
-def project_supply_chain():
-    return render_template('project_supply_chain.html')
-
-@app.route('/project/carbon_capture')
-def project_carbon_capture():
-    return render_template('project_carbon_capture.html')
-
-@app.route('/project/adversarial_ml')
-def project_adversarial_ml():
-    return render_template('project_adversarial_ml.html')
-
-@app.route('/project/policy_sandbox')
-def project_policy_sandbox():
-    return render_template('project_policy_sandbox.html')
-
-@app.route('/project/biodiversity_ai')
-def project_biodiversity_ai():
-    return render_template('project_biodiversity_ai.html')
 
 @app.route('/research/default')
 def research_default():
@@ -239,3 +219,5 @@ def contact():
 
     return render_template('index.html')
 
+if __name__ == "__main__":
+    app.run(debug=True)

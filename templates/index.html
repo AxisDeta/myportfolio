@@ -15,8 +15,8 @@
     <header>
         <div class="header-container">
             <div class="profile-container">
-                <img src="https://raw.githubusercontent.com/SHIVOGOJOHN/myportfolio/main/static/images/WhatsApp%20Image%202025-10-22%20at%2012.01.53_ecabafda.jpg"
-                    alt="Profile Picture" class="profile-picture magnifiable">
+                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture"
+                    class="profile-picture magnifiable">
                 <div class="header-text">
                     <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
                         <h1>Shivogo John</h1>
@@ -79,6 +79,12 @@
                         class="magnifiable">
                     {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
                     <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Project Image"
+                        class="magnifiable">
+                    {% elif project.title == 'ML Audit Library' %}
+                    <img src="{{ url_for('static', filename='ml_audit_preview.png') }}" alt="ML Audit Preview"
+                        class="magnifiable">
+                    {% elif project.title == 'Shiny Applications Suite' %}
+                    <img src="{{ url_for('static', filename='shiny_apps_preview.png') }}" alt="Shiny Apps Preview"
                         class="magnifiable">
                     {% else %}
                     <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Project Image"
