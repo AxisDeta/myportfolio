@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,116 +8,194 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <header>
         <div class="header-container">
             <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture" class="profile-picture">
+                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture"
+                    class="profile-picture">
                 <div class="header-text">
-                    <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;"><h1>Shivogo John</h1></a>
+                    <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
+                        <h1>Shivogo John</h1>
+                    </a>
                     <p class="job-title">Machine Learning Engineer</p>
                     <p class="welcome-message"><span id="typed-text"></span></p>
                 </div>
             </div>
             <div class="social-links-bottom">
-                <a href="https://github.com/SHIVOGOJOHN" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="mailto:shivogojohn@gmail.com" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
-                
-                <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://github.com/SHIVOGOJOHN" class="btn" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-github"></i></a>
+                <a href="mailto:shivogojohn@gmail.com" class="btn" target="_blank" rel="noopener noreferrer"><i
+                        class="fas fa-envelope"></i></a>
+                <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i
+                        class="fas fa-phone"></i></a>
+
+                <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i
+                        class="fas fa-graduation-cap"></i></a>
             </div>
-            </div>
+        </div>
     </header>
 
     <section id="research-details">
-        <a href="{{ url_for('all_research') }}" class="btn" style="margin-bottom: 1rem;"><i class="fas fa-arrow-left"></i> Back to All Research Articles</a>
-        
-        <h1>⚖️ Fair and Explainable Credit-Scoring under Concept Drift: Adaptive Explanation Frameworks for Evolving Populations</h1>
+        <a href="{{ url_for('all_research') }}" class="btn" style="margin-bottom: 1rem;"><i
+                class="fas fa-arrow-left"></i> Back to All Research Articles</a>
 
-        <p>This research explores how AI credit-scoring models can stay fair, transparent, and reliable over time even as customer behavior, economics, or demographics change. It introduces an adaptive explanation framework that monitors how model decisions evolve, detects data or concept drift, and ensures that explanations remain stable and fair across groups like gender, income, or region. Using metrics for drift detection, fairness auditing, and explainability stability (such as cosine similarity, Kendall tau, and Jaccard overlap), the study builds a foundation for ethical and trustworthy AI in financial decision-making. Beyond credit scoring, the framework applies to any industry using predictive models from insurance and healthcare to retail helping organizations balance accuracy, fairness, and accountability while maintaining regulatory compliance and public trust.</p>
+        <h1>⚖️ Fair and Explainable Credit-Scoring under Concept Drift: Adaptive Explanation Frameworks for Evolving
+            Populations</h1>
+
+        <p>This research explores how AI credit-scoring models can stay fair, transparent, and reliable over time even
+            as customer behavior, economics, or demographics change. It introduces an adaptive explanation framework
+            that monitors how model decisions evolve, detects data or concept drift, and ensures that explanations
+            remain stable and fair across groups like gender, income, or region. Using metrics for drift detection,
+            fairness auditing, and explainability stability (such as cosine similarity, Kendall tau, and Jaccard
+            overlap), the study builds a foundation for ethical and trustworthy AI in financial decision-making. Beyond
+            credit scoring, the framework applies to any industry using predictive models from insurance and healthcare
+            to retail helping organizations balance accuracy, fairness, and accountability while maintaining regulatory
+            compliance and public trust.</p>
         <div class="button-group" style="margin-top: 1.5rem;">
-            <a href="https://arxiv.org/pdf/2511.03807" class="btn" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem;"><i class="fas fa-file-alt"></i> View Article</a>
-            <a href="https://colab.research.google.com/drive/1hWTiUTnV63zfOhCUAKPHrq5SbcbN6Dik?usp=sharing" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> Source Code</a>
+            <a href="https://arxiv.org/pdf/2511.03807" class="btn" target="_blank" rel="noopener noreferrer"
+                style="display: inline-block; margin: 5px;"><i class="fas fa-file-alt"></i> View Article</a>
+            <a href="https://colab.research.google.com/drive/1hWTiUTnV63zfOhCUAKPHrq5SbcbN6Dik?usp=sharing" class="btn"
+                target="_blank" rel="noopener noreferrer" style="display: inline-block; margin: 5px;"><i
+                    class="fas fa-code"></i> Source Code</a>
         </div>
 
         <h2>📈 Business Impact, Profitability & Real World Deployment</h2>
         <h3>💰 Business Impact and Profitability</h3>
         <a href="{{ url_for('static', filename='mlops_main.png') }}" download>
-            <img src="{{ url_for('static', filename='business_impact_rectangles.png') }}" alt="Business Impact & Profitability" class="zoomable-image" style="width:100%; max-width: 800px; margin: 1rem 0; cursor: pointer;">
+            <img src="{{ url_for('static', filename='business_impact_rectangles.png') }}"
+                alt="Business Impact & Profitability" class="zoomable-image"
+                style="width:100%; max-width: 800px; margin: 1rem 0; cursor: pointer;">
         </a>
-        <p>This research bridges responsible AI and business performance by showing how adaptive explainability can directly improve trust, reduce risk, and enhance profit across industries not just in credit scoring.</p>
+        <p>This research bridges responsible AI and business performance by showing how adaptive explainability can
+            directly improve trust, reduce risk, and enhance profit across industries not just in credit scoring.</p>
         <ol>
-            <li><strong style="color: #03dac6;">Trust Builds Revenue</strong><br>When people and regulators understand why an AI made a decision, they trust it. This trust accelerates regulatory approval, increases customer adoption, and reduces complaints. For example, a lender that clearly explains credit decisions sees higher customer retention and faster market entry.</li>
-            <li><strong style="color: #03dac6;">Early Drift Detection Prevents Losses</strong><br>The system tracks changes in model behavior over time using advanced stability metrics. This allows early detection when models start making unusual or biased decisions before they cause financial damage. By catching drift early, businesses avoid costly retraining, poor loan approvals, or pricing mistakes.</li>
-            <li><strong style="color: #03dac6;">Fairness Recalibration Reduces Risk</strong><br>The framework identifies and corrects potential biases related to race, gender, or income. This reduces legal exposure, avoids regulatory fines, and strengthens brand reputation. Fair models also expand customer eligibility ethically increasing approved users and market reach.</li>
-            <li><strong style="color: #03dac6;">Adaptive Explainability Saves Costs</strong><br>Traditional explainability methods are computationally heavy. The adaptive SHAP framework introduced here updates explanations more efficiently, cutting cloud costs and enabling real-time interpretability. This reduces infrastructure spending while maintaining transparency at scale.</li>
-            <li><strong style="color: #03dac6;">Smarter Governance, Stronger Strategy</strong><br>The system doesn’t just explain predictions it tracks how feature importance changes over time. That historical insight becomes a form of business intelligence. Teams can learn what drives customer behavior, optimize decisions, and even discover new product opportunities from evolving patterns.</li>
-            <li><strong style="color: #03dac6;">Beyond Credit Scoring</strong><br>The framework applies across industries:
+            <li><strong style="color: #03dac6;">Trust Builds Revenue</strong><br>When people and regulators understand
+                why an AI made a decision, they trust it. This trust accelerates regulatory approval, increases customer
+                adoption, and reduces complaints. For example, a lender that clearly explains credit decisions sees
+                higher customer retention and faster market entry.</li>
+            <li><strong style="color: #03dac6;">Early Drift Detection Prevents Losses</strong><br>The system tracks
+                changes in model behavior over time using advanced stability metrics. This allows early detection when
+                models start making unusual or biased decisions before they cause financial damage. By catching drift
+                early, businesses avoid costly retraining, poor loan approvals, or pricing mistakes.</li>
+            <li><strong style="color: #03dac6;">Fairness Recalibration Reduces Risk</strong><br>The framework identifies
+                and corrects potential biases related to race, gender, or income. This reduces legal exposure, avoids
+                regulatory fines, and strengthens brand reputation. Fair models also expand customer eligibility
+                ethically increasing approved users and market reach.</li>
+            <li><strong style="color: #03dac6;">Adaptive Explainability Saves Costs</strong><br>Traditional
+                explainability methods are computationally heavy. The adaptive SHAP framework introduced here updates
+                explanations more efficiently, cutting cloud costs and enabling real-time interpretability. This reduces
+                infrastructure spending while maintaining transparency at scale.</li>
+            <li><strong style="color: #03dac6;">Smarter Governance, Stronger Strategy</strong><br>The system doesn’t
+                just explain predictions it tracks how feature importance changes over time. That historical insight
+                becomes a form of business intelligence. Teams can learn what drives customer behavior, optimize
+                decisions, and even discover new product opportunities from evolving patterns.</li>
+            <li><strong style="color: #03dac6;">Beyond Credit Scoring</strong><br>The framework applies across
+                industries:
                 <ul>
-                    <li><strong style="color: #03dac6;">Insurance</strong>: Detect fraud more accurately and reduce false investigations.</li>
-                    <li><strong style="color: #03dac6;">Healthcare</strong>: Increase doctor trust in AI diagnoses and meet compliance standards.</li>
-                    <li><strong style="color: #03dac6;">Retail</strong>: Improve demand forecasting and marketing ROI through interpretable models.</li>
-                    <li><strong style="color: #03dac6;">Finance</strong>: Prevent model drift in trading or risk models to avoid losses.</li>
+                    <li><strong style="color: #03dac6;">Insurance</strong>: Detect fraud more accurately and reduce
+                        false investigations.</li>
+                    <li><strong style="color: #03dac6;">Healthcare</strong>: Increase doctor trust in AI diagnoses and
+                        meet compliance standards.</li>
+                    <li><strong style="color: #03dac6;">Retail</strong>: Improve demand forecasting and marketing ROI
+                        through interpretable models.</li>
+                    <li><strong style="color: #03dac6;">Finance</strong>: Prevent model drift in trading or risk models
+                        to avoid losses.</li>
                     <li><strong style="color: #03dac6;">HR</strong>: Detect and mitigate bias in hiring systems.</li>
-                    <li><strong style="color: #03dac6;">Energy</strong>: Adapt predictions under changing environmental or market conditions.</li>
+                    <li><strong style="color: #03dac6;">Energy</strong>: Adapt predictions under changing environmental
+                        or market conditions.</li>
                 </ul>
             </li>
-            <li><strong style="color: #03dac6;">Turning Explainability into Competitive Intelligence</strong><br>Explainability data reveals why customers behave a certain way. Businesses can use that knowledge to tailor marketing, design better products, and make faster strategic decisions. This transforms explainability from a compliance necessity into a driver of innovation and profit.</li>
+            <li><strong style="color: #03dac6;">Turning Explainability into Competitive
+                    Intelligence</strong><br>Explainability data reveals why customers behave a certain way. Businesses
+                can use that knowledge to tailor marketing, design better products, and make faster strategic decisions.
+                This transforms explainability from a compliance necessity into a driver of innovation and profit.</li>
         </ol>
-        <p>In essence: <strong style="color: #03dac6;">Fair, explainable, and adaptive AI isn’t just ethical it’s profitable.</strong> It lowers operational costs, prevents failures, builds trust, and converts transparency into long-term business value.</p>
+        <p>In essence: <strong style="color: #03dac6;">Fair, explainable, and adaptive AI isn’t just ethical it’s
+                profitable.</strong> It lowers operational costs, prevents failures, builds trust, and converts
+            transparency into long-term business value.</p>
         <h3>🚀 Real-World Deployment</h3>
         <a href="{{ url_for('static', filename='mlops_main.png') }}" download>
-            <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="MLOps Pipeline for Adaptive Explainability System" class="zoomable-image" style="width:100%; max-width: 800px; margin: 1rem 0; cursor: pointer;">
+            <img src="{{ url_for('static', filename='mlops_main.png') }}"
+                alt="MLOps Pipeline for Adaptive Explainability System" class="zoomable-image"
+                style="width:100%; max-width: 800px; margin: 1rem 0; cursor: pointer;">
         </a>
         <ol>
-            <li><strong style="color: #03dac6;">Data Ingestion & Monitoring</strong><br>Pulls data continuously from internal systems (loan applications, transactions, user profiles, etc.). Validates schema and detects missing or drifted features using PSI, KS, and JS Divergence metrics. Sends drift alerts to a monitoring dashboard (e.g., Prometheus + Grafana).</li>
-            <li><strong style="color: #03dac6;">Preprocessing & Feature Store</strong><br>Uses a centralized Feature Store (like Feast or Vertex AI) for consistent features across training and inference. Stores engineered features such as age buckets, income levels, and behavior indicators. Pipelines built in scikit-learn or PySpark automatically version features and handle scaling/imputation.</li>
-            <li><strong style="color: #03dac6;">Model Training & Validation</strong><br>Uses scheduled retraining (weekly/monthly) triggered by drift or performance degradation. Employs cross-validation, SMOTE for class balance, and automatic hyperparameter tuning. Logs all metrics (ROC-AUC, F1, fairness metrics) to MLflow or Weights & Biases for traceability.</li>
-            <li><strong style="color: #03dac6;">Fairness & Explainability Audits</strong><br>Post-training audit layer runs fairness checks across sensitive attributes (race, gender, income). Generates SHAP-based explainability reports and stability comparisons across time. Results are pushed to a compliance dashboard for internal or regulatory review.</li>
-            <li><strong style="color: #03dac6;">Model Registry & Versioning</strong><br>Trained models are stored in a Model Registry (MLflow / Sagemaker Model Registry). Each model version includes metadata: dataset hash, drift metrics, fairness report, and SHAP plots. Only validated and bias-free versions are promoted to production.</li>
-            <li><strong style="color: #03dac6;">Deployment & Serving</strong><br>Models deployed via RESTful APIs or containerized microservices (Docker + Kubernetes). Real-time inference handled by a scalable prediction service (e.g., FastAPI + Redis queue). Each prediction logs input, output, and explanation for traceability.</li>
-            <li><strong style="color: #03dac6;">Continuous Monitoring & Retraining Loop</strong><br>Monitors prediction accuracy, fairness drift, and SHAP stability in production. If drift or bias exceeds threshold triggers automatic retraining and redeployment. Alerts routed through Slack, Opsgenie, or email for human review before rollout.</li>
-            <li><strong style="color: #03dac6;">Security & Compliance Layer</strong><br>Data encrypted at rest (S3, GCS) and in transit (TLS). Access controls managed via IAM and audit trails. Ensures explainability and fairness logs align with AI governance and regulatory standards (e.g., GDPR, CFPB, ISO/IEC 42001).</li>
+            <li><strong style="color: #03dac6;">Data Ingestion & Monitoring</strong><br>Pulls data continuously from
+                internal systems (loan applications, transactions, user profiles, etc.). Validates schema and detects
+                missing or drifted features using PSI, KS, and JS Divergence metrics. Sends drift alerts to a monitoring
+                dashboard (e.g., Prometheus + Grafana).</li>
+            <li><strong style="color: #03dac6;">Preprocessing & Feature Store</strong><br>Uses a centralized Feature
+                Store (like Feast or Vertex AI) for consistent features across training and inference. Stores engineered
+                features such as age buckets, income levels, and behavior indicators. Pipelines built in scikit-learn or
+                PySpark automatically version features and handle scaling/imputation.</li>
+            <li><strong style="color: #03dac6;">Model Training & Validation</strong><br>Uses scheduled retraining
+                (weekly/monthly) triggered by drift or performance degradation. Employs cross-validation, SMOTE for
+                class balance, and automatic hyperparameter tuning. Logs all metrics (ROC-AUC, F1, fairness metrics) to
+                MLflow or Weights & Biases for traceability.</li>
+            <li><strong style="color: #03dac6;">Fairness & Explainability Audits</strong><br>Post-training audit layer
+                runs fairness checks across sensitive attributes (race, gender, income). Generates SHAP-based
+                explainability reports and stability comparisons across time. Results are pushed to a compliance
+                dashboard for internal or regulatory review.</li>
+            <li><strong style="color: #03dac6;">Model Registry & Versioning</strong><br>Trained models are stored in a
+                Model Registry (MLflow / Sagemaker Model Registry). Each model version includes metadata: dataset hash,
+                drift metrics, fairness report, and SHAP plots. Only validated and bias-free versions are promoted to
+                production.</li>
+            <li><strong style="color: #03dac6;">Deployment & Serving</strong><br>Models deployed via RESTful APIs or
+                containerized microservices (Docker + Kubernetes). Real-time inference handled by a scalable prediction
+                service (e.g., FastAPI + Redis queue). Each prediction logs input, output, and explanation for
+                traceability.</li>
+            <li><strong style="color: #03dac6;">Continuous Monitoring & Retraining Loop</strong><br>Monitors prediction
+                accuracy, fairness drift, and SHAP stability in production. If drift or bias exceeds threshold triggers
+                automatic retraining and redeployment. Alerts routed through Slack, Opsgenie, or email for human review
+                before rollout.</li>
+            <li><strong style="color: #03dac6;">Security & Compliance Layer</strong><br>Data encrypted at rest (S3, GCS)
+                and in transit (TLS). Access controls managed via IAM and audit trails. Ensures explainability and
+                fairness logs align with AI governance and regulatory standards (e.g., GDPR, CFPB, ISO/IEC 42001).</li>
         </ol>
-        <p><strong style="color: #03dac6;">Outcome:</strong> This pipeline ensures the system stays fair, explainable, and stable in real-world use detecting drift early, maintaining trust with regulators and users, and enabling continuous, ethical AI at scale.</p>
+        <p><strong style="color: #03dac6;">Outcome:</strong> This pipeline ensures the system stays fair, explainable,
+            and stable in real-world use detecting drift early, maintaining trust with regulators and users, and
+            enabling continuous, ethical AI at scale.</p>
         <!-- More content will be added here later -->
     </section>
 
-        <footer>
+    <footer>
 
-            <div class="footer-links">
+        <div class="footer-links">
 
-                <a href="tel:+254704234829" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
+            <a href="tel:+254704234829" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
 
-                <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i
+                    class="fas fa-envelope"></i></a>
 
-            </div>
+        </div>
 
-            <p class="titles">Machine Learning Engineer | Data Engineer | Statistician</p>
+        <p class="titles">Machine Learning Engineer | Data Engineer | Statistician</p>
 
-            <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
+        <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
 
-        </footer>
+    </footer>
 
 
     {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul class="flashes">
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const flashMessages = document.querySelector('.flashes');
-                    if (flashMessages) {
-                        setTimeout(function() {
-                            flashMessages.style.display = 'none';
-                        }, 3000); // 3000 milliseconds = 3 seconds
-                    }
-                });
-            </script>
-        {% endif %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const flashMessages = document.querySelector('.flashes');
+            if (flashMessages) {
+                setTimeout(function () {
+                    flashMessages.style.display = 'none';
+                }, 3000); // 3000 milliseconds = 3 seconds
+            }
+        });
+    </script>
+    {% endif %}
     {% endwith %}
     <script>
         const textElement = document.getElementById('typed-text');
@@ -134,7 +213,7 @@
         document.addEventListener('DOMContentLoaded', typeText);
 
         // Image enlargement functionality for zoomable-image class
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const zoomableImages = document.querySelectorAll('.zoomable-image');
             const body = document.body;
             let overlay = document.querySelector('.overlay');
@@ -147,7 +226,7 @@
             }
 
             zoomableImages.forEach(image => {
-                image.addEventListener('click', function() {
+                image.addEventListener('click', function () {
                     image.classList.toggle('enlarged');
                     overlay.classList.toggle('active');
                     // Prevent scrolling when enlarged
@@ -155,7 +234,7 @@
                 });
             });
 
-            overlay.addEventListener('click', function() {
+            overlay.addEventListener('click', function () {
                 zoomableImages.forEach(image => {
                     image.classList.remove('enlarged');
                 });
@@ -165,4 +244,5 @@
         });
     </script>
 </body>
+
 </html>
