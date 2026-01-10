@@ -1,20 +1,5 @@
 [
   {
-    "title": "Shiny Applications Suite",
-    "description": "A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization, and decision-making.",
-    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations.",
-    "tech_stack": [
-      "R",
-      "Shiny",
-      "bslib",
-      "Plotly",
-      "Leaflet"
-    ],
-    "image": "shiny_apps_preview_20260110_095323.png",
-    "content_file": "dataml.md",
-    "id": "dataml"
-  },
-  {
     "id": "blockchain_ai",
     "title": "Federated Learning with Blockchain & IPFS",
     "description": "A decentralized, auditable, and transparent AI training ecosystem.",
@@ -29,6 +14,7 @@
       "IPFS",
       "Streamlit"
     ],
+    "image": "FedBlockChainAI.png",
     "details": "This project integrates Federated Learning (FL) with Blockchain and IPFS to create a decentralized, auditable, and transparent AI training ecosystem. The system ensures that local data from different clients (e.g., stores, hospitals, IoT devices) remains private, while model updates are aggregated securely on a central node. Each aggregation round is recorded on the Ethereum blockchain for transparency, and the aggregated global model is stored on IPFS for decentralized access."
   },
   {
@@ -43,19 +29,6 @@
     "details": "This research investigates the dual role of adversarial machine learning in cybersecurity. On one hand, we explore how attackers can exploit vulnerabilities in machine learning models used for security applications (e.g., malware detection, intrusion detection) through adversarial examples. We use libraries like CleverHans to craft these attacks. On the other hand, we research how to build more robust and resilient security models by using adversarial training. This involves training models on a dataset augmented with adversarial examples, effectively teaching them to resist such attacks. The paper presents a novel framework for a continuous cycle of adversarial attack and defense, leading to progressively stronger security systems."
   },
   {
-    "title": "Research on Low-Resource Medical NLP",
-    "description": "Natural Language Processing for medical applications in low-resource settings.",
-    "details": "This research focuses on the challenge of applying advanced Natural Language Processing (NLP) techniques to medical domains where labeled data is scarce. We explore transfer learning and data augmentation techniques to adapt large pre-trained language models (like those from the Hugging Face Transformers library) to specific medical tasks, such as clinical entity recognition and patient outcome prediction, using only a small amount of annotated data. The paper proposes a new self-training methodology that leverages a model's own predictions on unlabeled data to improve its performance, demonstrating its effectiveness on several low-resource medical datasets. The goal is to make cutting-edge NLP accessible for a wider range of medical applications, particularly in specialized or under-resourced areas.",
-    "tech_stack": [
-      "Python",
-      "PyTorch",
-      "Hugging Face Transformers"
-    ],
-    "image": "linux_20260110_075933.jpg",
-    "content_file": "paper_low_resource_med.md",
-    "id": "paper_low_resource_med"
-  },
-  {
     "id": "paper_quantum_gnn",
     "title": "Research on Quantum Graph Neural Networks",
     "description": "Investigating the intersection of quantum computing and graph neural networks.",
@@ -64,6 +37,7 @@
       "PennyLane",
       "PyTorch Geometric"
     ],
+    "image": "GNN.drawio.png",
     "details": "This research explores the potential of quantum computing to enhance the capabilities of Graph Neural Networks (GNNs). We are developing hybrid quantum-classical GNN models where the feature transformation and message passing steps are implemented as parameterized quantum circuits. Using libraries like PennyLane for quantum machine learning and PyTorch Geometric for GNNs, we investigate whether these quantum variants can learn more expressive representations of graph-structured data compared to their classical counterparts. The paper provides a theoretical analysis of the expressive power of quantum GNNs and presents experimental results on benchmark graph classification tasks, showing promising (though early) results for certain classes of problems."
   },
   {
@@ -87,22 +61,8 @@
       "Drift Detection",
       "Adaptive SHAP"
     ],
+    "image": "mlops_main.png",
     "details": "This research explores how AI credit-scoring models can stay fair, transparent, and reliable over time even as customer behavior, economics, or demographics change. It introduces an adaptive explanation framework that monitors how model decisions evolve, detects data or concept drift, and ensures that explanations remain stable and fair across groups like gender, income, or region. Using metrics for drift detection, fairness auditing, and explainability stability (such as cosine similarity, Kendall tau, and Jaccard overlap), the study builds a foundation for ethical and trustworthy AI in financial decision-making."
-  },
-  {
-    "title": "ML in cybersec",
-    "description": "ML in cybersec",
-    "details": "Developing and Implementing AI-Driven Models for Demand Forecasting In  US Supply Chains: A Comprehensive Approach to Enhancing Predictive Accuracy\r\n",
-    "tech_stack": [
-      "Python",
-      "Flask",
-      "FastAPI",
-      "Docker",
-      "Pytorch"
-    ],
-    "image": "16271-NVIDIA_Jetson_Nano_Developer_Kit__V3_-01_20260110_091210.webp",
-    "content_file": "ml_in_cybersec.md",
-    "id": "ml_in_cybersec"
   },
   {
     "title": "ML Audit Library",
@@ -116,5 +76,20 @@
     "image": "ml_audit_preview_20260110_094354.png",
     "content_file": "ml_audit_library.md",
     "id": "ml_audit_library"
+  },
+  {
+    "title": "Shiny Applications Suite",
+    "description": "A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization, and decision-making.",
+    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations.",
+    "tech_stack": [
+      "R",
+      "Shiny",
+      "bslib",
+      "Plotly",
+      "Leaflet"
+    ],
+    "image": "shiny_apps_preview_20260110_095644.png",
+    "content_file": "shiny_applications_suite.md",
+    "id": "shiny_applications_suite"
   }
 ]

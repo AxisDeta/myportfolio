@@ -1,8 +1,21 @@
 [
   {
+    "title": "ML Audit Library",
+    "description": "Solves Data Lineage Blindness by tracking granular preprocessing steps.",
+    "details": "ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library records every granular transformation applied to your pandas DataFrame. Features include Full Audit Trail, Reproducibility checks, and Visualization of the preprocessing pipeline.",
+    "tech_stack": [
+      "Python",
+      "Pandas",
+      "Scikit-Learn"
+    ],
+    "image": "ml_audit_preview_20260110_094029.png",
+    "content_file": "ml_audit.md",
+    "id": "ml_audit"
+  },
+  {
+    "id": "dataml",
     "title": "Shiny Applications Suite",
     "description": "A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization, and decision-making.",
-    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations.",
     "tech_stack": [
       "R",
       "Shiny",
@@ -10,9 +23,7 @@
       "Plotly",
       "Leaflet"
     ],
-    "image": "shiny_apps_preview_20260110_095323.png",
-    "content_file": "dataml.md",
-    "id": "dataml"
+    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations."
   },
   {
     "id": "blockchain_ai",
@@ -103,18 +114,5 @@
     "image": "16271-NVIDIA_Jetson_Nano_Developer_Kit__V3_-01_20260110_091210.webp",
     "content_file": "ml_in_cybersec.md",
     "id": "ml_in_cybersec"
-  },
-  {
-    "title": "ML Audit Library",
-    "description": "Solves Data Lineage Blindness by tracking granular preprocessing steps.",
-    "details": "ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library records every granular transformation applied to your pandas DataFrame. Features include Full Audit Trail, Reproducibility checks, and Visualization of the preprocessing pipeline.",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "Scikit-Learn"
-    ],
-    "image": "ml_audit_preview_20260110_094354.png",
-    "content_file": "ml_audit_library.md",
-    "id": "ml_audit_library"
   }
 ]

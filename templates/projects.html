@@ -45,7 +45,10 @@
             {% for project in projects %}
             <div class="project">
                 <div class="card-header-image">
-                    {% if project.title == 'Federated Learning with Blockchain & IPFS' %}
+                    {% if project.image %}
+                    <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
+                        class="magnifiable">
+                    {% elif project.title == 'Federated Learning with Blockchain & IPFS' %}
                     <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image"
                         class="magnifiable">
                     {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
@@ -64,7 +67,8 @@
                 </div>
                 <h3>{{ project.title }}</h3>
                 <p>{{ project.description }}</p>
-                <a href="{{ url_for(project.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read More</a>
+                <a href="{{ url_for('project_details', project_id=project.id) }}" class="btn"><i
+                        class="fas fa-book-open"></i> Read More</a>
                 <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask
                     AI</button>
             </div>

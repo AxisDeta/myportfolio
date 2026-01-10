@@ -45,7 +45,10 @@
             {% for paper in research_papers %}
             <div class="research-paper">
                 <div class="card-header-image">
-                    {% if paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                    {% if paper.image %}
+                    <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}"
+                        class="magnifiable">
+                    {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
                     <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image"
                         class="magnifiable">
                     {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
@@ -53,11 +56,13 @@
                         class="magnifiable">
                     {% else %}
                     <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image"
-                        class="magnifiable"> {% endif %}
+                        class="magnifiable">
+                    {% endif %}
                 </div>
                 <h3>{{ paper.title }}</h3>
                 <p>{{ paper.description }}</p>
-                <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read More</a>
+                <a href="{{ url_for('project_details', project_id=paper.id) }}" class="btn"><i
+                        class="fas fa-book-open"></i> Read More</a>
                 <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask
                     AI</button>
             </div>

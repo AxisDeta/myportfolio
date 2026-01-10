@@ -1,8 +1,19 @@
 [
   {
+    "id": "ml_audit",
+    "title": "ML Audit Library",
+    "description": "Solves Data Lineage Blindness by tracking granular preprocessing steps.",
+    "tech_stack": [
+      "Python",
+      "Pandas",
+      "Scikit-Learn"
+    ],
+    "details": "ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library records every granular transformation applied to your pandas DataFrame. Features include Full Audit Trail, Reproducibility checks, and Visualization of the preprocessing pipeline."
+  },
+  {
+    "id": "dataml",
     "title": "Shiny Applications Suite",
     "description": "A comprehensive collection of 8 interactive R Shiny applications for data analysis, visualization, and decision-making.",
-    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations.",
     "tech_stack": [
       "R",
       "Shiny",
@@ -10,9 +21,7 @@
       "Plotly",
       "Leaflet"
     ],
-    "image": "shiny_apps_preview_20260110_095323.png",
-    "content_file": "dataml.md",
-    "id": "dataml"
+    "details": "A suite of 8 interactive web applications built with R Shiny, demonstrating full-stack data science capabilities. The suite includes tools for business analytics, statistical simulation, financial forecasting, geospatial analysis, and quality control. All apps feature a consistent, modern UI (using bslib) and are deployed options for real-time interaction. Key features include interactive dashboards, data upload/export capabilities, and dynamic visualizations."
   },
   {
     "id": "blockchain_ai",
@@ -43,17 +52,15 @@
     "details": "This research investigates the dual role of adversarial machine learning in cybersecurity. On one hand, we explore how attackers can exploit vulnerabilities in machine learning models used for security applications (e.g., malware detection, intrusion detection) through adversarial examples. We use libraries like CleverHans to craft these attacks. On the other hand, we research how to build more robust and resilient security models by using adversarial training. This involves training models on a dataset augmented with adversarial examples, effectively teaching them to resist such attacks. The paper presents a novel framework for a continuous cycle of adversarial attack and defense, leading to progressively stronger security systems."
   },
   {
+    "id": "paper_low_resource_med",
     "title": "Research on Low-Resource Medical NLP",
     "description": "Natural Language Processing for medical applications in low-resource settings.",
-    "details": "This research focuses on the challenge of applying advanced Natural Language Processing (NLP) techniques to medical domains where labeled data is scarce. We explore transfer learning and data augmentation techniques to adapt large pre-trained language models (like those from the Hugging Face Transformers library) to specific medical tasks, such as clinical entity recognition and patient outcome prediction, using only a small amount of annotated data. The paper proposes a new self-training methodology that leverages a model's own predictions on unlabeled data to improve its performance, demonstrating its effectiveness on several low-resource medical datasets. The goal is to make cutting-edge NLP accessible for a wider range of medical applications, particularly in specialized or under-resourced areas.",
     "tech_stack": [
       "Python",
       "PyTorch",
       "Hugging Face Transformers"
     ],
-    "image": "linux_20260110_075933.jpg",
-    "content_file": "paper_low_resource_med.md",
-    "id": "paper_low_resource_med"
+    "details": "This research focuses on the challenge of applying advanced Natural Language Processing (NLP) techniques to medical domains where labeled data is scarce. We explore transfer learning and data augmentation techniques to adapt large pre-trained language models (like those from the Hugging Face Transformers library) to specific medical tasks, such as clinical entity recognition and patient outcome prediction, using only a small amount of annotated data. The paper proposes a new self-training methodology that leverages a model's own predictions on unlabeled data to improve its performance, demonstrating its effectiveness on several low-resource medical datasets. The goal is to make cutting-edge NLP accessible for a wider range of medical applications, particularly in specialized or under-resourced areas."
   },
   {
     "id": "paper_quantum_gnn",
@@ -92,29 +99,15 @@
   {
     "title": "ML in cybersec",
     "description": "ML in cybersec",
-    "details": "Developing and Implementing AI-Driven Models for Demand Forecasting In  US Supply Chains: A Comprehensive Approach to Enhancing Predictive Accuracy\r\n",
     "tech_stack": [
       "Python",
-      "Flask",
-      "FastAPI",
-      "Docker",
-      "Pytorch"
+      " Flask ",
+      " FastAPI"
     ],
-    "image": "16271-NVIDIA_Jetson_Nano_Developer_Kit__V3_-01_20260110_091210.webp",
-    "content_file": "ml_in_cybersec.md",
+    "github_link": "https://github.com/SHIVOGOJOHN/Profile",
+    "live_link": "https://www.mlaudit.info",
+    "docs_link": "https://www.mlaudit.info",
+    "image": "XAI_MLOPs_20260110_051834.png",
     "id": "ml_in_cybersec"
-  },
-  {
-    "title": "ML Audit Library",
-    "description": "Solves Data Lineage Blindness by tracking granular preprocessing steps.",
-    "details": "ml-audit is a lightweight Python library designed to bring transparency and reproducibility to data preprocessing. Unlike standard experiment trackers that treat preprocessing as a black box, this library records every granular transformation applied to your pandas DataFrame. Features include Full Audit Trail, Reproducibility checks, and Visualization of the preprocessing pipeline.",
-    "tech_stack": [
-      "Python",
-      "Pandas",
-      "Scikit-Learn"
-    ],
-    "image": "ml_audit_preview_20260110_094354.png",
-    "content_file": "ml_audit_library.md",
-    "id": "ml_audit_library"
   }
 ]

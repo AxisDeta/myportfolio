@@ -36,6 +36,48 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(container);
     });
 
+    // Animated Counter for Impact Metrics
+    function animateCounter(element) {
+        const targetStr = element.getAttribute('data-target');
+        const target = parseFloat(targetStr);
+        const isDecimal = targetStr.includes('.');
+        const label = element.nextElementSibling.textContent;
+        const isPercentage = label.includes('%');
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                element.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Add + sign to all except percentage
+                const finalValue = isDecimal ? target.toFixed(1) : target;
+                element.textContent = isPercentage ? finalValue : finalValue + '+';
+            }
+        };
+
+        updateCounter();
+    }
+
+    // Trigger counter animation when hero section is visible
+    const heroSection = document.querySelector('#hero-section');
+    if (heroSection) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const metricNumbers = document.querySelectorAll('.metric-number');
+                    metricNumbers.forEach(num => animateCounter(num));
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        heroObserver.observe(heroSection);
+    }
+
     // Image enlargement using a lightbox approach
     const magnifiableImages = document.querySelectorAll('.magnifiable');
     const body = document.body;

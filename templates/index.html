@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML Engineer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2.6">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}?v=3.0" defer></script>
 </head>
 
 <body>
@@ -61,10 +61,47 @@
     {% endif %}
     {% endwith %}
 
-    <section id="quote-section">
-        <div class="quote-container">
-            <p class="quote-text">“Correlation does not imply causality.”</p>
-            <p class="quote-author">— Karl Pearson</p>
+    <!-- Hero Section with Impact Metrics -->
+    <section id="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-headline">I Build ML Systems That Actually Work in Production</h1>
+            <p class="hero-subtitle">Specializing in taking messy, real-world data and building ML systems that ship—not
+                just notebooks that work on Kaggle.</p>
+
+            <!-- Impact Metrics -->
+            <div class="impact-metrics">
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.production_models|default('8') }}">0</div>
+                    <div class="metric-label">Production Models</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.model_uptime|default('99.9') }}">0</div>
+                    <div class="metric-label">% Model Uptime</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.client_projects|default('5') }}">0</div>
+                    <div class="metric-label">Client Projects</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.years_experience|default('5') }}">0</div>
+                    <div class="metric-label">Years Experience</div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">See My Work</a>
+                <a href="#contact-cta" class="btn btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-background">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
     </section>
 
@@ -75,7 +112,10 @@
                 {% for project in projects %}
                 <div class="project">
                     <div class="card-header-image">
-                        {% if project.title == 'Federated Learning with Blockchain & IPFS' %}
+                        {% if project.image %}
+                        <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
+                            class="magnifiable">
+                        {% elif project.title == 'Federated Learning with Blockchain & IPFS' %}
                         <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image"
                             class="magnifiable">
                         {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
@@ -94,7 +134,8 @@
                     </div>
                     <h3>{{ project.title }}</h3>
                     <p>{{ project.description }}</p>
-                    <a href="{{ url_for(project.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read
+                    <a href="{{ url_for('project_details', project_id=project.id) }}" class="btn"><i
+                            class="fas fa-book-open"></i> Read
                         More</a>
                     <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask
                         AI</button>
@@ -245,7 +286,24 @@
     </div>
     </section>
 
+    <!-- Contact CTA Section -->
+    <section id="contact-cta">
+        <div class="cta-container">
+            <h2 class="cta-headline">Let's Build Something Amazing Together</h2>
+            <p class="cta-subtitle">Have a project in mind? I respond within 24 hours.</p>
 
+            <div class="cta-content">
+                <div class="cta-quick-contact">
+                    <a href="mailto:shivogojohn@gmail.com" class="btn btn-primary btn-large">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://github.com/SHIVOGOJOHN" class="btn btn-secondary btn-large" target="_blank">
+                        <i class="fab fa-github"></i> View GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-links">

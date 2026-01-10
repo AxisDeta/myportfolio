@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if mode == 'add' %}Add{% else %}Edit{% endif %} Project - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0A0E27;
+            color: #e0e0e0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .header h1 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .header a {
+            color: #0052CC;
+            text-decoration: none;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .form-section {
+            background: #1e1e1e;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        .form-group label .required {
+            color: #dc3545;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0052CC;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.25rem;
+            color: #b8b8d1;
+            font-size: 0.85rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background: #3a3a3a;
+            border-color: #0052CC;
+        }
+
+        .file-name {
+            margin-left: 1rem;
+            color: #b8b8d1;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #0052CC;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #003d99;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #2a2a2a;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #3a3a3a;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-{% if mode == 'add' %}plus{% else %}edit{% endif %}"></i>
+                {% if mode == 'add' %}Add New {{ item_type|default('project')|capitalize }}
+                {% else %}Edit {{ item_type|default('project')|capitalize }}{% endif %}
+            </h1>
+            <a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+
+        <div class="form-section">
+            <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="type" value="{{ item_type|default('project') }}">
+
+                <div class="form-group">
+                    <label for="title">Title <span class="required">*</span></label>
+                    <input type="text" id="title" name="title" required
+                        value="{% if project %}{{ project.title }}{% endif %}">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Short Description <span class="required">*</span></label>
+                    <textarea id="description" name="description"
+                        required>{% if project %}{{ project.description }}{% endif %}</textarea>
+                    <small>Provide a brief summary (appears on cards)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">AI Context / Detailed Description</label>
+                    <textarea id="details" name="details"
+                        style="min-height: 150px;">{% if project and project.details %}{{ project.details }}{% endif %}</textarea>
+                    <small>Write a detailed description here. This is <strong>only used by the AI</strong> to answer
+                        questions about this project. It is NOT shown on the project card.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="content_markdown">Page Content (Markdown Editor)</label>
+
+                    <!-- Component Toolbox -->
+                    <div class="toolbox"
+                        style="background: #1a1a1a; border: 1px solid #444; padding: 10px; margin-bottom: 15px; border-radius: 4px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                        <strong style="margin-right: 10px; color: #b8b8d1;"><i class="fas fa-toolbox"></i>
+                            Tools:</strong>
+                        <button type="button" class="btn-tool" onclick="insertButton('github')"
+                            title="Insert Github Button"><i class="fab fa-github"></i></button>
+                        <button type="button" class="btn-tool" onclick="insertButton('colab')"
+                            title="Insert Colab Button"><i class="fas fa-laptop-code"></i></button>
+                        <button type="button" class="btn-tool" onclick="insertButton('demo')"
+                            title="Insert Live Demo Button"><i class="fas fa-external-link-alt"></i></button>
+                        <button type="button" class="btn-tool" onclick="insertButton('pypi')"
+                            title="Insert PyPI Button"><i class="fas fa-box-open"></i></button>
+                        <button type="button" class="btn-tool" onclick="insertButton('paper')"
+                            title="Insert Read Paper Button"><i class="fas fa-file-pdf"></i></button>
+                        <button type="button" class="btn-tool" onclick="insertButton('generic')"
+                            title="Insert Generic Button">Link</button>
+                        <span style="color:#444;">|</span>
+                        <button type="button" class="btn-tool"
+                            onclick="document.getElementById('hidden_content_image').click()"
+                            title="Upload & Insert Image"><i class="fas fa-image"></i> Insert Image</button>
+                        <input type="file" id="hidden_content_image" style="display:none;" accept="image/*"
+                            onchange="uploadAndInsertImage(this)">
+                    </div>
+
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+                    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+                    <textarea id="content_markdown"
+                        name="content_markdown">{% if content_initial_value %}{{ content_initial_value }}{% endif %}</textarea>
+
+                    <small>Use the rich editor above. Use the <strong>Tools</strong> bar to insert styled buttons or
+                        upload images directly.</small>
+
+                    <style>
+                        .btn-tool {
+                            background: #2a2a2a;
+                            color: #ccc;
+                            border: 1px solid #444;
+                            padding: 6px 12px;
+                            cursor: pointer;
+                            border-radius: 4px;
+                            transition: all 0.2s;
+                        }
+
+                        .btn-tool:hover {
+                            background: #0052CC;
+                            color: white;
+                            border-color: #0052CC;
+                        }
+                    </style>
+
+                    <script>
+                        var simplemde = new SimpleMDE({
+                            element: document.getElementById("content_markdown"),
+                            spellChecker: false,
+                            status: false,
+                            placeholder: "Write your project details here using Markdown...",
+                            toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list", "ordered-list", "|", "link", "image", "|", "preview", "side-by-side", "fullscreen"]
+                        });
+
+                        function insertButton(type) {
+                            let url = prompt("Enter Button URL:");
+                            if (!url) return;
+                            let text = prompt("Enter Button Label:");
+                            if (!text) {
+                                if (type === 'github') text = 'View on GitHub';
+                                else if (type === 'colab') text = 'Open in Colab';
+                                else if (type === 'demo') text = 'Live Demo';
+                                else if (type === 'pypi') text = 'View on PyPI';
+                                else if (type === 'paper') text = 'Read Paper';
+                                else text = 'Click Here';
+                            }
+
+                            let icon = '';
+                            if (type === 'github') icon = '<i class="fab fa-github"></i> ';
+                            else if (type === 'colab') icon = '<i class="fas fa-laptop-code"></i> ';
+                            else if (type === 'demo') icon = '<i class="fas fa-external-link-alt"></i> ';
+                            else if (type === 'pypi') icon = '<i class="fas fa-box-open"></i> ';
+                            else if (type === 'paper') icon = '<i class="fas fa-file-pdf"></i> ';
+
+                            let html = `<a href="${url}" class="btn" target="_blank" style="display: inline-block; margin: 5px;">${icon}${text}</a> `;
+
+                            let pos = simplemde.codemirror.getCursor();
+                            simplemde.codemirror.replaceRange(html, pos);
+                        }
+
+                        function uploadAndInsertImage(input) {
+                            let file = input.files[0];
+                            if (!file) return;
+
+                            let pos = simplemde.codemirror.getCursor();
+                            simplemde.codemirror.replaceRange("![Uploading...]()", pos);
+
+                            let formData = new FormData();
+                            formData.append('file', file);
+
+                            fetch('/admin/upload/asset', { method: 'POST', body: formData })
+                                .then(r => r.json())
+                                .then(data => {
+                                    if (data.url) {
+                                        let md = `\n![Image](${data.url})\n`;
+                                        // We append it because finding the cursor position after async might be tricky if user moved
+                                        // But usually they wait.
+                                        // Better: Replace "![Uploading...]()" if we could track it, but appending is safe.
+                                        simplemde.codemirror.setValue(simplemde.codemirror.getValue().replace("![Uploading...]()", md));
+                                    } else {
+                                        alert("Upload failed");
+                                        simplemde.codemirror.setValue(simplemde.codemirror.getValue().replace("![Uploading...]()", ""));
+                                    }
+                                })
+                                .catch(e => {
+                                    alert("Error: " + e);
+                                    simplemde.codemirror.setValue(simplemde.codemirror.getValue().replace("![Uploading...]()", ""));
+                                });
+                        }
+                    </script>
+                </div>
+
+                <div class="form-group">
+                    <label for="tech_stack">Tech Stack <span class="required">*</span></label>
+                    <input type="text" id="tech_stack" name="tech_stack" required
+                        value="{% if project %}{{ project.tech_stack|join(', ') }}{% endif %}">
+                    <small>Comma-separated list (e.g., Python, TensorFlow, Docker)</small>
+                </div>
+
+                <!-- Links section removed as per user request (handled via Markdown Toolbox) -->
+
+                <div class="form-group">
+                    <label for="image">Preview Image</label>
+                    <div class="file-input-wrapper">
+                        <label for="image" class="file-input-label">
+                            <i class="fas fa-upload"></i> Choose Image
+                        </label>
+                        <input type="file" id="image" name="image" accept="image/*" onchange="updateFileName(this)">
+                        <span class="file-name" id="file-name">
+                            {% if project and project.image %}{{ project.image }}{% else %}No file chosen{% endif %}
+                        </span>
+                    </div>
+                    <small>PNG, JPG, or WEBP (max 5MB)</small>
+                    {% if project and project.image %}
+                    <input type="hidden" name="existing_image" value="{{ project.image }}">
+                    {% endif %}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> {% if mode == 'add' %}Add {{ item_type|default('project')|capitalize
+                        }}
+                        {% else %}Save Changes{% endif %}
+                    </button>
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            const fileName = input.files[0] ? input.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        }
+
+        function updateContentFileName(input) {
+            const fileName = input.files[0] ? input.files[0].name : 'No file chosen';
+            document.getElementById('content-file-name').textContent = fileName;
+        }
+    </script>
+</body>
+
+</html>

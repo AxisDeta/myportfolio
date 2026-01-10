@@ -4,9 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>{{ project.title }} - Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add markdown CSS support if needed -->
+    <style>
+        /* Basic markdown styling matching site theme */
+        #project-content-dynamic {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #1e1e1e;
+            border-radius: 8px;
+            color: #ccc;
+        }
+
+        #project-content-dynamic h1,
+        #project-content-dynamic h2,
+        #project-content-dynamic h3 {
+            color: #fff;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #project-content-dynamic p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        #project-content-dynamic pre {
+            background: #111;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+
+        #project-content-dynamic code {
+            background: #333;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        #project-content-dynamic img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        #project-content-dynamic a {
+            color: #0052CC;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,7 +78,6 @@
                         class="fas fa-envelope"></i></a>
                 <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i
                         class="fas fa-phone"></i></a>
-
                 <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i
                         class="fas fa-graduation-cap"></i></a>
             </div>
@@ -38,62 +85,15 @@
     </header>
 
     <section id="project-details" class="fade-in-section">
-        {% if project %}
-        <h1 style="text-align: center;">{{ project.title }}</h1>
-
-        <div class="project-meta" style="text-align: center; margin-bottom: 2rem;">
-            {% if project.tech_stack %}
-            <div class="tech-stack-badges">
-                {% for tech in project.tech_stack %}
-                <span class="badge"
-                    style="background: rgba(0, 82, 204, 0.2); color: #00D9FF; padding: 5px 10px; border-radius: 15px; margin: 0 5px; font-size: 0.9em;">{{
-                    tech }}</span>
-                {% endfor %}
-            </div>
+        <div id="project-content-dynamic">
+            {% if content %}
+            {{ content|safe }}
+            {% elif include_file %}
+            {% include include_file %}
+            {% else %}
+            <p>Content is loading...</p>
             {% endif %}
         </div>
-
-        <div class="project-content" style="max-width: 800px; margin: 0 auto;">
-            {% if project.image %}
-            <div class="project-image-container" style="text-align: center; margin-bottom: 2rem;">
-                <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
-                    style="max-width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-            </div>
-            {% endif %}
-
-            <div class="description">
-                <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-                    {{ project.description }}
-                </p>
-                {% if project.details %}
-                <p style="line-height: 1.6; margin-bottom: 2rem;">
-                    {{ project.details }}
-                </p>
-                {% endif %}
-            </div>
-
-            <div class="project-links"
-                style="text-align: center; margin-top: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                {% if project.github_link %}
-                <a href="{{ project.github_link }}" class="btn" target="_blank"><i class="fab fa-github"></i> View
-                    Code</a>
-                {% endif %}
-
-                {% if project.live_link %}
-                <a href="{{ project.live_link }}" class="btn" target="_blank"><i class="fas fa-external-link-alt"></i>
-                    Live Demo</a>
-                {% endif %}
-
-                {% if project.docs_link %}
-                <a href="{{ project.docs_link }}" class="btn" target="_blank"><i class="fas fa-book"></i>
-                    Documentation</a>
-                {% endif %}
-            </div>
-        </div>
-        {% else %}
-        <h1 style="text-align: center;">Project Not Found</h1>
-        <p style="text-align: center;">The requested project could not be loaded.</p>
-        {% endif %}
     </section>
 
     <footer>
@@ -106,7 +106,7 @@
         <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
     </footer>
 
-
+    <!-- Flashes and Scripts -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     <ul class="flashes">
@@ -120,13 +120,14 @@
             if (flashMessages) {
                 setTimeout(function () {
                     flashMessages.style.display = 'none';
-                }, 3000); // 3000 milliseconds = 3 seconds
+                }, 3000);
             }
         });
     </script>
     {% endif %}
     {% endwith %}
     <script>
+        // Typing Effect Reused
         const textElement = document.getElementById('typed-text');
         const fullText = "Glad you dropped by. I'm passionate about making sense of data and building impactful solutions with it. Feel free to have a look around.";
         let charIndex = 0;
@@ -135,36 +136,50 @@
             if (charIndex < fullText.length) {
                 textElement.textContent += fullText.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeText, 15); // Adjust typing speed here (milliseconds)
+                setTimeout(typeText, 15);
             }
         }
-
         document.addEventListener('DOMContentLoaded', typeText);
 
-        // Profile picture enlargement
+        // Profile Zoom
         document.addEventListener('DOMContentLoaded', function () {
             const profilePicture = document.querySelector('.profile-picture');
             const body = document.body;
             let overlay = document.querySelector('.overlay');
-
-            // Create overlay if it doesn't exist
             if (!overlay) {
                 overlay = document.createElement('div');
                 overlay.classList.add('overlay');
                 body.appendChild(overlay);
             }
-
             profilePicture.addEventListener('click', function () {
                 profilePicture.classList.toggle('enlarged');
                 overlay.classList.toggle('active');
-                // Prevent scrolling when enlarged
                 body.style.overflow = profilePicture.classList.contains('enlarged') ? 'hidden' : '';
             });
-
             overlay.addEventListener('click', function () {
                 profilePicture.classList.remove('enlarged');
                 overlay.classList.remove('active');
                 body.style.overflow = '';
+            });
+
+            // Fade-in Animation Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
