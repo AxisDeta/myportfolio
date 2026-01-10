@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Intersection Observer for fade-in animation
     const sections = document.querySelectorAll('section');
+    const categoryContainers = document.querySelectorAll('.category-container');
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -27,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
     sections.forEach(section => {
         section.classList.add('fade-in-section');
         observer.observe(section);
+    });
+
+    // Observe category containers for scroll animations
+    categoryContainers.forEach(container => {
+        observer.observe(container);
     });
 
     // Image enlargement using a lightbox approach

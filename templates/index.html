@@ -69,182 +69,180 @@
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
-        <div class="grid-container">
-            {% for project in projects %}
-            <div class="project">
-                <div class="card-header-image">
-                    {% if project.title == 'Federated Learning with Blockchain & IPFS' %}
-                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image"
-                        class="magnifiable">
-                    {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Project Image"
-                        class="magnifiable">
-                    {% elif project.title == 'ML Audit Library' %}
-                    <img src="{{ url_for('static', filename='ml_audit_preview.png') }}" alt="ML Audit Preview"
-                        class="magnifiable">
-                    {% elif project.title == 'Shiny Applications Suite' %}
-                    <img src="{{ url_for('static', filename='shiny_apps_preview.png') }}" alt="Shiny Apps Preview"
-                        class="magnifiable">
-                    {% else %}
-                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Project Image"
-                        class="magnifiable">
-                    {% endif %}
+        <div class="category-container">
+            <h2 class="category-title">Projects</h2>
+            <div class="grid-container">
+                {% for project in projects %}
+                <div class="project">
+                    <div class="card-header-image">
+                        {% if project.title == 'Federated Learning with Blockchain & IPFS' %}
+                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image"
+                            class="magnifiable">
+                        {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Project Image"
+                            class="magnifiable">
+                        {% elif project.title == 'ML Audit Library' %}
+                        <img src="{{ url_for('static', filename='ml_audit_preview.png') }}" alt="ML Audit Preview"
+                            class="magnifiable">
+                        {% elif project.title == 'Shiny Applications Suite' %}
+                        <img src="{{ url_for('static', filename='shiny_apps_preview.png') }}" alt="Shiny Apps Preview"
+                            class="magnifiable">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Project Image"
+                            class="magnifiable">
+                        {% endif %}
+                    </div>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <a href="{{ url_for(project.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read
+                        More</a>
+                    <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask
+                        AI</button>
                 </div>
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-                <a href="{{ url_for(project.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read More</a>
-                <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask
-                    AI</button>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div class="view-all-btn-container">
-            <a href="{{ url_for('all_projects') }}" class="btn">View All Projects</a>
+            <div class="view-all-btn-container">
+                <a href="{{ url_for('all_projects') }}" class="btn">View All Projects</a>
+            </div>
         </div>
     </section>
 
     <section id="research">
-        <h2>Applied Innovation & Real-World Impact</h2>
-        <div class="grid-container">
-            {% for paper in research_papers %}
-            <div class="research-paper">
-                <div class="card-header-image">
-                    {% if paper.title == 'Federated Learning with Blockchain & IPFS' %}
-                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image"
-                        class="magnifiable">
-                    {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image"
-                        class="magnifiable">
-                    {% else %}
-                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image"
-                        class="magnifiable"> {% endif %}
+        <div class="category-container">
+            <h2 class="category-title">Applied Innovation & Real-World Impact</h2>
+            <div class="grid-container">
+                {% for paper in research_papers %}
+                <div class="research-paper">
+                    <div class="card-header-image">
+                        {% if paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image"
+                            class="magnifiable">
+                        {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image"
+                            class="magnifiable">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image"
+                            class="magnifiable"> {% endif %}
+                    </div>
+                    <h3>{{ paper.title }}</h3>
+                    <p>{{ paper.description }}</p>
+                    <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read
+                        More</a>
+                    <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask
+                        AI</button>
                 </div>
-                <h3>{{ paper.title }}</h3>
-                <p>{{ paper.description }}</p>
-                <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read More</a>
-                <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask
-                    AI</button>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div class="view-all-btn-container">
-            <a href="{{ url_for('all_research') }}" class="btn">View All Research & Applications</a>
+            <div class="view-all-btn-container">
+                <a href="{{ url_for('all_research') }}" class="btn">View All Research & Applications</a>
+            </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2>My Expertise</h2>
-        <div class="skills-row">
-            <div class="skill-column">
-                <h3>Languages</h3>
-                <ul>
-                    <li>C</li>
-                    <li>Python</li>
-                    <li>C++17</li>
-                </ul>
+        <div class="category-container">
+            <h2 class="category-title">My Expertise</h2>
+            <div class="skills-row">
+                <div class="skill-column">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>C</li>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>R</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h3>MLOps & Deployment</h3>
+                    <ul>
+                        <li>Kubernetes</li>
+                        <li>MLflow</li>
+                        <li>Docker</li>
+                        <li>Azure ML/AWS</li>
+                        <li>Flask/Fast API</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h3>Major Libraries</h3>
+                    <ul>
+                        <li>Tensorflow</li>
+                        <li>Pytorch</li>
+                        <li>Scikit-Learn</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h3>Other Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>MongoDB</li>
+                        <li>MySQL</li>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h3>Other Skills</h3>
+                    <ul>
+                        <li>Web Development<br><em>(Flask, HTML, CSS, Bootstrap, Javascript)</em></li>
+                        <li>Web Scraping<br><em>(Python)</em></li>
+                        <li>Automations<br><em>(Python and Gen AI)</em></li>
+                    </ul>
+                </div>
             </div>
-            <div class="skill-column">
-                <h3>MLOps & Deployment</h3>
-                <ul>
-                    <li>Kubernetes</li>
-                    <li>MLflow</li>
-                    <li>Docker</li>
-                    <li>Azure ML/AWS</li>
-                    <li>Flask/Fast API</li>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="skill-column">
-                <h3>Major Libraries</h3>
-                <ul>
-                    <li>Tensorflow</li>
-                    <li>Pytorch</li>
-                    <li>Scikit-Learn</li>
-                </ul>
-            </div>
-            <div class="skill-column">
-                <h3>Other Tools</h3>
-                <ul>
-                    <li>Git</li>
-                    <li>MongoDB</li>
-                    <li>MySQL</li>
-                    <li>Linux</li>
-                </ul>
-            </div>
-            <div class="skill-column">
-                <h3>Other Skills</h3>
-                <ul>
-                    <li>Web Development<br><em>(Flask, HTML, CSS, Bootstrap, Javascript)</em></li>
-                    <li>Web Scraping<br><em>(Python)</em></li>
-                    <li>Automations<br><em>(Python and Gen AI)</em></li>
-                </ul>
+
+            <!-- Tech Icons Showcase -->
+            <div class="tech-showcase-divider"></div>
+            <h3 class="tech-showcase-title">Technologies I Work With</h3>
+            <div class="tech-icons">
+                <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python" /></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                    rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="Javascript" /></a>
+                <a href="https://www.c-language.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" /></a>
+                <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                        alt="C++" /></a>
+                <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                        alt="SQL" /></a>
+                <a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+                        alt="Kubernetes" /></a>
+                <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                        alt="Docker" /></a>
+                <a href="https://azure.microsoft.com/en-us/services/machine-learning/" target="_blank"
+                    rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+                        alt="Azure" /></a>
+                <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                        alt="TensorFlow" /></a>
+                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                        alt="PyTorch" /></a>
+                <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /></a>
+                <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                        alt="MongoDB" /></a>
+                <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                        alt="MySQL" /></a>
+                <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                        alt="Linux" /></a>
             </div>
         </div>
     </section>
 
 
 
-    <section id="tech-showcase">
-        <div class="tech-icons">
-            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                    alt="Python" /></a>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
-                rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    alt="Javascript" /></a>
-            <a href="https://www.c-language.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" /></a>
-            <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                    alt="C++" /></a>
-            <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                    alt="SQL" /></a>
-            <a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
-                    alt="Kubernetes" /></a>
 
-            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                    alt="Docker" /></a>
-            <a href="https://azure.microsoft.com/en-us/services/machine-learning/" target="_blank"
-                rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
-                    alt="Azure ML" /></a>
-            <a href="https://palletsprojects.com/p/flask/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" /></a>
-            <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
-                    alt="Fast API" /></a>
-            <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                    alt="Tensorflow" /></a>
-            <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
-                    alt="Pytorch" /></a>
-            <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg"
-                    alt="Scikit-Learn" /></a>
-            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /></a>
-            <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt="MongoDB" /></a>
-            <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" /></a>
-            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" /></a>
-            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" /></a>
-            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" /></a>
-            <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                    alt="Bootstrap" /></a>
-
-        </div>
+    </div>
     </section>
 
 

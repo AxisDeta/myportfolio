@@ -11,7 +11,8 @@
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    aspect-ratio: 1/1; /* Ensure a square aspect ratio */
+    aspect-ratio: 1/1;
+    /* Ensure a square aspect ratio */
     margin-bottom: 1rem;
     border: 3px solid #03dac6;
     /* Animation 2: Subtle Entrance Animation */
@@ -19,8 +20,10 @@
     transform: translateY(20px);
     animation: fadeInSlideUp 0.8s ease-out forwards;
     animation-delay: 0.2s;
-    cursor: zoom-in; /* Indicate it's clickable */
-    transition: all 0.3s ease-in-out; /* Smooth transition for enlargement */
+    cursor: zoom-in;
+    /* Indicate it's clickable */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition for enlargement */
 }
 
 /* Lightbox styles */
@@ -39,7 +42,7 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Overlay for enlarged image */
@@ -49,13 +52,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
-    z-index: 999; /* Behind the enlarged image */
-    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Dark semi-transparent background */
+    z-index: 999;
+    /* Behind the enlarged image */
+    display: none;
+    /* Hidden by default */
 }
 
 .overlay.active {
-    display: block; /* Show when active */
+    display: block;
+    /* Show when active */
 }
 
 header {
@@ -127,27 +134,34 @@ header {
     justify-content: flex-end;
     margin-top: 1.5rem;
     width: 100%;
-    gap: 0.25rem; /* Same as footer buttons */
+    gap: 0.25rem;
+    /* Same as footer buttons */
 }
 
 .social-links-bottom .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem; /* Smaller fixed width for square button */
-    height: 2rem; /* Smaller fixed height for square button */
-    padding: 0; /* Remove padding to center icon */
+    width: 2rem;
+    /* Smaller fixed width for square button */
+    height: 2rem;
+    /* Smaller fixed height for square button */
+    padding: 0;
+    /* Remove padding to center icon */
     margin: 0 0.5rem;
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 1s; /* Stagger delay */
+    animation-delay: 1s;
+    /* Stagger delay */
 }
 
 .social-links-bottom .btn i {
-    font-size: 1.2rem; /* Explicit font size for icon */
-    margin: 0; /* Remove any default icon margin */
+    font-size: 1.2rem;
+    /* Explicit font size for icon */
+    margin: 0;
+    /* Remove any default icon margin */
 }
 
 @keyframes fadeInSlideUp {
@@ -169,8 +183,10 @@ section {
     border-radius: 8px;
     border: 2px solid #03dac6;
     box-shadow: 0 0 15px rgba(3, 218, 198, 0.5);
-    margin: 2rem auto 5rem auto; /* Top, Right, Bottom, Left */
-    max-width: 700px; /* Constrain width on all screens */
+    margin: 2rem auto 5rem auto;
+    /* Top, Right, Bottom, Left */
+    max-width: 700px;
+    /* Constrain width on all screens */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,7 +221,8 @@ section {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-.project, .research-paper {
+.project,
+.research-paper {
     background-color: #1e1e1e;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -215,13 +232,15 @@ section {
     text-align: center;
 }
 
-.project:hover, .research-paper:hover {
+.project:hover,
+.research-paper:hover {
     transform: translateY(-5px);
     /* Animation 3: Enhanced Hover Effects */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-.project h3, .research-paper h3 {
+.project h3,
+.research-paper h3 {
     margin-top: 0;
     color: #03dac6;
     text-align: center;
@@ -239,8 +258,10 @@ section {
     padding: 1.5rem;
     border-radius: 8px;
     border: 1px solid #333;
-    flex: 1 1 calc(20% - 1rem); /* Distribute 5 items evenly with gap */
-    min-width: 180px; /* Minimum width to prevent excessive shrinking */
+    flex: 1 1 calc(20% - 1rem);
+    /* Distribute 5 items evenly with gap */
+    min-width: 180px;
+    /* Minimum width to prevent excessive shrinking */
     transition: transform 0.3s ease;
 }
 
@@ -282,8 +303,133 @@ section {
 
 .view-all-btn-container .btn {
     display: block;
-    margin: 1.5rem auto; /* Add some vertical margin for spacing */
-    width: fit-content; /* Make the block element only as wide as its content */
+    margin: 1.5rem auto;
+    /* Add some vertical margin for spacing */
+    width: fit-content;
+    /* Make the block element only as wide as its content */
+}
+
+/* Category Container Styles */
+.category-container {
+    background-color: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(3, 218, 198, 0.2);
+}
+
+.category-title {
+    color: #03dac6;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #03dac6;
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .category-container {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Tech Showcase within My Expertise */
+.tech-showcase-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03dac6, transparent);
+    margin: 2.5rem 0 2rem 0;
+}
+
+.tech-showcase-title {
+    color: #03dac6;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.tech-icons img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.tech-icons img:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: grayscale(0%) drop-shadow(0 0 10px rgba(3, 218, 198, 0.5));
+}
+
+@media (max-width: 768px) {
+    .tech-icons img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tech-showcase-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Enhanced Card Hover Effects */
+.project:hover,
+.research-paper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(3, 218, 198, 0.2);
+    border-color: #03dac6;
+}
+
+/* Enhanced View All Button Styling */
+.view-all-btn-container .btn {
+    background: linear-gradient(135deg, #03dac6 0%, #018786 100%);
+    box-shadow: 0 4px 8px rgba(3, 218, 198, 0.3);
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+}
+
+.view-all-btn-container .btn:hover {
+    box-shadow: 0 6px 12px rgba(3, 218, 198, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Scroll-triggered fade-in for category containers */
+.category-container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.category-container.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Quote Section Enhancement */
+#quote-section {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+    border: 2px solid #03dac6;
+    box-shadow: 0 0 20px rgba(3, 218, 198, 0.3);
 }
 
 #learning-roadmap .roadmap-container {
@@ -299,7 +445,8 @@ section {
     border-radius: 8px;
     border: 1px solid #333;
     flex: 1;
-    min-width: 250px; /* Adjust as needed */
+    min-width: 250px;
+    /* Adjust as needed */
     transition: transform 0.3s ease;
 }
 
@@ -339,13 +486,15 @@ section {
     }
 
     .profile-picture {
-        margin-right: 0; /* Reset margin for mobile */
+        margin-right: 0;
+        /* Reset margin for mobile */
         margin-bottom: 1rem;
     }
 
     .header-text {
         text-align: center;
-        margin-left: 0; /* Reset margin for mobile */
+        margin-left: 0;
+        /* Reset margin for mobile */
     }
 
     .header-text h1 {
@@ -369,7 +518,8 @@ section {
         margin: 0.5rem 0.5rem;
     }
 
-    .project .btn, .research-paper .btn {
+    .project .btn,
+    .research-paper .btn {
         margin-bottom: 0.5rem;
     }
 
@@ -380,7 +530,8 @@ section {
 
     /* Quote Section Mobile Styles */
     #quote-section {
-        margin: 2rem; /* 2rem for mobile */
+        margin: 2rem;
+        /* 2rem for mobile */
     }
 }
 
@@ -388,12 +539,14 @@ section {
     display: inline-flex;
     align-items: center;
     background-color: #03dac6;
-    color: #121212 !important; /* Ensure button text is black */
+    color: #121212 !important;
+    /* Ensure button text is black */
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.1s ease; /* Animation 4: Button Press Feedback */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    /* Animation 4: Button Press Feedback */
 }
 
 .btn:hover {
@@ -408,7 +561,8 @@ section {
 #contact form {
     display: flex;
     flex-direction: column;
-    max-width: 500px; /* Adjust as needed */
+    max-width: 500px;
+    /* Adjust as needed */
     margin: 0;
 }
 
@@ -419,12 +573,15 @@ section {
 
     /* Quote Section PC Styles */
     #quote-section {
-        margin: 2rem auto; /* 2rem auto for PC */
-        max-width: 700px; /* Narrower for PC */
+        margin: 2rem auto;
+        /* 2rem auto for PC */
+        max-width: 700px;
+        /* Narrower for PC */
     }
 }
 
-#contact input, #contact textarea {
+#contact input,
+#contact textarea {
     background-color: #1e1e1e;
     border: 1px solid #333;
     color: #e0e0e0;
@@ -436,16 +593,20 @@ section {
 }
 
 /* Animation 5: Form Input Focus Animation */
-#contact input:focus, #contact textarea:focus {
+#contact input:focus,
+#contact textarea:focus {
     border-color: #03dac6;
     box-shadow: 0 0 0 3px rgba(3, 218, 198, 0.5);
-    outline: none; /* Remove default outline */
+    outline: none;
+    /* Remove default outline */
 }
 
 #contact button {
     cursor: pointer;
-    max-width: 200px; /* Adjust as needed */
-    margin: 0 auto; /* Center the button */
+    max-width: 200px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Center the button */
 }
 
 .btn i {
@@ -464,23 +625,30 @@ footer {
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 0.25rem; /* Restored spacing */
+    gap: 0.25rem;
+    /* Restored spacing */
     margin-bottom: 1rem;
 }
 
 .footer-links a {
-    color: #121212; /* Black icon color */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Allow margin/padding if needed for spacing between icons */
+    color: #121212;
+    /* Black icon color */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Allow margin/padding if needed for spacing between icons */
 }
 
 .footer-links a:hover {
-    opacity: 0.7; /* Subtle hover effect */
+    opacity: 0.7;
+    /* Subtle hover effect */
 }
 
 .footer-links a i {
-    font-size: 1.5rem; /* Adjust icon size as needed */
-    margin: 0; /* Ensure no extra margin on the icon itself */
+    font-size: 1.5rem;
+    /* Adjust icon size as needed */
+    margin: 0;
+    /* Ensure no extra margin on the icon itself */
 }
 
 footer .download-btn {
@@ -517,7 +685,8 @@ footer .copyright {
 .tech-icons img {
     width: 40px;
     height: 40px;
-    margin: 10px; /* Add margin back for spacing */
+    margin: 10px;
+    /* Add margin back for spacing */
 }
 
 .tech-icons i {
@@ -535,14 +704,18 @@ footer .copyright {
         /* Calculate flex-basis for 5 columns with 1.5rem gap */
         /* (100% - (4 * 1.5rem)) / 5 = (100% - 6rem) / 5 */
         flex-basis: calc((100% - 6rem) / 5);
-        max-width: 100%; /* Ensure it doesn't overflow its flex-basis */
+        max-width: 100%;
+        /* Ensure it doesn't overflow its flex-basis */
         height: auto;
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        margin: 0; /* Remove individual margins, gap handles spacing */
+        box-sizing: border-box;
+        /* Include padding and border in the element's total width and height */
+        margin: 0;
+        /* Remove individual margins, gap handles spacing */
     }
 
     .tech-icons {
-        padding: 0; /* Remove padding that might affect calc */
+        padding: 0;
+        /* Remove padding that might affect calc */
     }
 
     .tech-icons i {
@@ -562,13 +735,15 @@ footer .copyright {
     }
 
     .profile-picture {
-        margin-right: 0; /* Reset margin for mobile */
+        margin-right: 0;
+        /* Reset margin for mobile */
         margin-bottom: 1rem;
     }
 
     .header-text {
         text-align: center;
-        margin-left: 0; /* Reset margin for mobile */
+        margin-left: 0;
+        /* Reset margin for mobile */
     }
 
     .header-text h1 {
@@ -592,7 +767,8 @@ footer .copyright {
         margin: 0.5rem 0.5rem;
     }
 
-    .project .btn, .research-paper .btn {
+    .project .btn,
+    .research-paper .btn {
         margin-bottom: 0.5rem;
     }
 
@@ -603,7 +779,8 @@ footer .copyright {
 
     /* Quote Section Mobile Styles */
     #quote-section {
-        margin: 2rem; /* 2rem for mobile */
+        margin: 2rem;
+        /* 2rem for mobile */
     }
 
     /* Disable fade-in animation on mobile */
@@ -631,31 +808,39 @@ footer .copyright {
 }
 
 .quote-text {
-    font-family: 'Playfair Display', serif; /* Unique font */
+    font-family: 'Playfair Display', serif;
+    /* Unique font */
     font-size: 1.8rem;
-    color: #03dac6; /* Matching website's color theme */
+    color: #03dac6;
+    /* Matching website's color theme */
     margin-bottom: 1rem;
     position: relative;
-    padding: 0; /* Remove padding that was for pseudo-elements */
+    padding: 0;
+    /* Remove padding that was for pseudo-elements */
 }
 
 .quote-author {
     font-size: 1.1rem;
-    color: #888; /* Different shade of text color */
+    color: #888;
+    /* Different shade of text color */
 }
 
 /* Styling for links within project and research detail sections */
 #project-details a,
 #research-details a {
-    color: #03dac6; /* Accent color for links */
-    text-decoration: none; /* Remove underline by default */
+    color: #03dac6;
+    /* Accent color for links */
+    text-decoration: none;
+    /* Remove underline by default */
     transition: color 0.3s ease;
 }
 
 #project-details a:hover,
 #research-details a:hover {
-    color: #018786; /* Slightly darker accent on hover */
-    text-decoration: underline; /* Add underline on hover for better UX */
+    color: #018786;
+    /* Slightly darker accent on hover */
+    text-decoration: underline;
+    /* Add underline on hover for better UX */
 }
 
 /* Grid layout for projects and research papers */
@@ -666,7 +851,8 @@ footer .copyright {
 }
 
 .card-header-image {
-    height: 200px; /* Adjust as needed */
+    height: 200px;
+    /* Adjust as needed */
     margin-bottom: 1rem;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
