@@ -311,6 +311,7 @@ body.signature-layout .ai-chat-modal-content {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   position: relative;
+  isolation: isolate;
 }
 
 body.signature-layout .ai-chat-modal-content h2 {
@@ -332,9 +333,14 @@ body.signature-layout .close-button {
 }
 
 body.signature-layout .chat-window {
+  min-height: 0;
+  height: 100%;
+  margin: 0;
   padding: 1rem 1.2rem;
   overflow-y: auto;
   background: #090d14;
+  position: relative;
+  z-index: 1;
 }
 
 body.signature-layout .chat-message {
@@ -363,6 +369,8 @@ body.signature-layout .chat-input-container {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.6rem;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 body.signature-layout .chat-input-container input {
@@ -424,6 +432,49 @@ body.signature-layout .chat-input-container button:hover {
 }
 
 @media (max-width: 640px) {
+  body.signature-layout #hero-section {
+    padding-top: 1.45rem;
+    padding-bottom: 1.9rem;
+  }
+
+  body.signature-layout .story-hero {
+    gap: 1rem;
+    align-items: start;
+  }
+
+  body.signature-layout .kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+
+  body.signature-layout .hero-title {
+    font-size: clamp(1.65rem, 8.6vw, 2.3rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+
+  body.signature-layout .hero-lead {
+    font-size: 0.95rem;
+  }
+
+  body.signature-layout .hero-cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 0.45rem;
+  }
+
+  body.signature-layout .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  body.signature-layout .hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
   body.signature-layout .ai-chat-modal {
     padding: 0.6rem;
   }
@@ -449,5 +500,16 @@ body.signature-layout .chat-input-container button:hover {
   body.signature-layout .ai-chat-modal-content h2 {
     font-size: 0.86rem;
     padding-right: 2.4rem;
+  }
+}
+
+
+@media (max-width: 420px) {
+  body.signature-layout .hero-title {
+    font-size: clamp(1.45rem, 8vw, 1.95rem);
+  }
+
+  body.signature-layout .hero-metrics {
+    grid-template-columns: 1fr;
   }
 }
