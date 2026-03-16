@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML Engineer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2.6">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2.7">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='script.js') }}?v=3.0" defer></script>
 </head>
@@ -32,14 +32,11 @@
                         class="fas fa-envelope"></i></a>
                 <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i
                         class="fas fa-phone"></i></a>
-
                 <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i
                         class="fas fa-graduation-cap"></i></a>
             </div>
         </div>
     </header>
-
-
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -54,7 +51,7 @@
             if (flashMessages) {
                 setTimeout(function () {
                     flashMessages.style.display = 'none';
-                }, 3000); // 3000 milliseconds = 3 seconds
+                }, 3000);
             }
         });
     </script>
@@ -100,212 +97,167 @@
             </div>
         </div>
 
-        <!-- Animated Background -->
-        <div class="hero-background">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">Read case studies</a>
+            <a href="#contact-cta" class="btn btn-secondary">Start a conversation</a>
         </div>
     </section>
 
-    <section id="projects">
-        <div class="category-container">
-            <h2 class="category-title">Projects</h2>
-            <div class="grid-container">
-                {% for project in projects %}
-                <div class="project">
-                    <div class="card-header-image">
-                        {% if project.image %}
-                        <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
-                            class="magnifiable">
-                        {% elif project.title == 'Federated Learning with Blockchain & IPFS' %}
-                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image"
-                            class="magnifiable">
-                        {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Project Image"
-                            class="magnifiable">
-                        {% elif project.title == 'ML Audit Library' %}
-                        <img src="{{ url_for('static', filename='ml_audit_preview.png') }}" alt="ML Audit Preview"
-                            class="magnifiable">
-                        {% elif project.title == 'Shiny Applications Suite' %}
-                        <img src="{{ url_for('static', filename='shiny_apps_preview.png') }}" alt="Shiny Apps Preview"
-                            class="magnifiable">
-                        {% else %}
-                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Project Image"
-                            class="magnifiable">
-                        {% endif %}
-                    </div>
+    <section id="projects" class="editorial-projects">
+        <div class="section-intro split-intro">
+            <h2>Selected Projects</h2>
+            <p>Two builds that represent how I think: practical architecture first, then model performance, then delivery.
+            </p>
+        </div>
+
+        <div class="project-stories">
+            {% for project in projects %}
+            <article class="project story-block">
+                <div class="story-media">
+                    {% if project.image %}
+                    <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}" class="magnifiable">
+                    {% elif project.title == 'Federated Learning with Blockchain & IPFS' %}
+                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Project Image" class="magnifiable">
+                    {% elif project.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Project Image" class="magnifiable">
+                    {% elif project.title == 'ML Audit Library' %}
+                    <img src="{{ url_for('static', filename='ml_audit_preview.png') }}" alt="ML Audit Preview" class="magnifiable">
+                    {% elif project.title == 'Shiny Applications Suite' %}
+                    <img src="{{ url_for('static', filename='shiny_apps_preview.png') }}" alt="Shiny Apps Preview" class="magnifiable">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Project Image" class="magnifiable">
+                    {% endif %}
+                </div>
+                <div class="story-copy">
                     <h3>{{ project.title }}</h3>
                     <p>{{ project.description }}</p>
-                    <a href="{{ url_for('project_details', project_id=project.id) }}" class="btn"><i
-                            class="fas fa-book-open"></i> Read
-                        More</a>
-                    <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask
-                        AI</button>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="view-all-btn-container">
-                <a href="{{ url_for('all_projects') }}" class="btn">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="research">
-        <div class="category-container">
-            <h2 class="category-title">Applied Innovation & Real-World Impact</h2>
-            <div class="grid-container">
-                {% for paper in research_papers %}
-                <div class="research-paper">
-                    <div class="card-header-image">
-                        {% if paper.title == 'Federated Learning with Blockchain & IPFS' %}
-                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image"
-                            class="magnifiable">
-                        {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image"
-                            class="magnifiable">
-                        {% else %}
-                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image"
-                            class="magnifiable"> {% endif %}
+                    <div class="story-actions">
+                        <a href="{{ url_for('project_details', project_id=project.id) }}" class="btn"><i class="fas fa-book-open"></i> Read
+                            details</a>
+                        <button class="btn ask-ai-btn" data-item-id="{{ project.id }}"><i class="fas fa-brain"></i> Ask AI</button>
                     </div>
-                    <h3>{{ paper.title }}</h3>
-                    <p>{{ paper.description }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="view-all-btn-container">
+            <a href="{{ url_for('all_projects') }}" class="btn">Open full project archive</a>
+        </div>
+    </section>
+
+    <section id="research" class="editorial-research">
+        <p class="section-kicker">RESEARCH TRACK</p>
+        <h2>Applied innovation with measurable outcomes</h2>
+
+        <div class="research-columns">
+            {% for paper in research_papers %}
+            <article class="research-paper research-entry">
+                <h3>{{ paper.title }}</h3>
+                <p>{{ paper.description }}</p>
+                <div class="story-media research-media">
+                    {% if paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image" class="magnifiable">
+                    {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image" class="magnifiable">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image" class="magnifiable">
+                    {% endif %}
+                </div>
+                <div class="story-actions">
                     <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read
-                        More</a>
-                    <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask
-                        AI</button>
+                        more</a>
+                    <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask AI</button>
                 </div>
-                {% endfor %}
-            </div>
-            <div class="view-all-btn-container">
-                <a href="{{ url_for('all_research') }}" class="btn">View All Research & Applications</a>
-            </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="view-all-btn-container">
+            <a href="{{ url_for('all_research') }}" class="btn">See all research and applications</a>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="category-container">
-            <h2 class="category-title">My Expertise</h2>
-            <div class="skills-row">
-                <div class="skill-column">
-                    <h3>Languages</h3>
-                    <ul>
-                        <li>C</li>
-                        <li>Python</li>
-                        <li>C++</li>
-                        <li>R</li>
-                    </ul>
-                </div>
-                <div class="skill-column">
-                    <h3>MLOps & Deployment</h3>
-                    <ul>
-                        <li>Kubernetes</li>
-                        <li>MLflow</li>
-                        <li>Docker</li>
-                        <li>Azure ML/AWS</li>
-                        <li>Flask/Fast API</li>
-                    </ul>
-                </div>
-                <div class="skill-column">
-                    <h3>Major Libraries</h3>
-                    <ul>
-                        <li>Tensorflow</li>
-                        <li>Pytorch</li>
-                        <li>Scikit-Learn</li>
-                    </ul>
-                </div>
-                <div class="skill-column">
-                    <h3>Other Tools</h3>
-                    <ul>
-                        <li>Git</li>
-                        <li>MongoDB</li>
-                        <li>MySQL</li>
-                        <li>Linux</li>
-                    </ul>
-                </div>
-                <div class="skill-column">
-                    <h3>Other Skills</h3>
-                    <ul>
-                        <li>Web Development<br><em>(Flask, HTML, CSS, Bootstrap, Javascript)</em></li>
-                        <li>Web Scraping<br><em>(Python)</em></li>
-                        <li>Automations<br><em>(Python and Gen AI)</em></li>
-                    </ul>
-                </div>
-            </div>
+    <section id="skills" class="editorial-skills">
+        <h2>Toolbox & Working Style</h2>
 
-            <!-- Tech Icons Showcase -->
-            <div class="tech-showcase-divider"></div>
-            <h3 class="tech-showcase-title">Technologies I Work With</h3>
-            <div class="tech-icons">
-                <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                        alt="Python" /></a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
-                    rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                        alt="Javascript" /></a>
-                <a href="https://www.c-language.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" /></a>
-                <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                        alt="C++" /></a>
-                <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                        alt="SQL" /></a>
-                <a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
-                        alt="Kubernetes" /></a>
-                <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                        alt="Docker" /></a>
-                <a href="https://azure.microsoft.com/en-us/services/machine-learning/" target="_blank"
-                    rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
-                        alt="Azure" /></a>
-                <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                        alt="TensorFlow" /></a>
-                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
-                        alt="PyTorch" /></a>
-                <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /></a>
-                <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                        alt="MongoDB" /></a>
-                <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                        alt="MySQL" /></a>
-                <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer"><img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                        alt="Linux" /></a>
+        <div class="skills-zigzag">
+            <div class="skill-column">
+                <h3>Languages</h3>
+                <ul>
+                    <li>C</li>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>R</li>
+                </ul>
             </div>
+            <div class="skill-column">
+                <h3>MLOps & Deployment</h3>
+                <ul>
+                    <li>Kubernetes</li>
+                    <li>MLflow</li>
+                    <li>Docker</li>
+                    <li>Azure ML / AWS</li>
+                    <li>Flask / FastAPI</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3>Libraries</h3>
+                <ul>
+                    <li>TensorFlow</li>
+                    <li>PyTorch</li>
+                    <li>Scikit-learn</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3>Data + Infra</h3>
+                <ul>
+                    <li>Git</li>
+                    <li>MongoDB</li>
+                    <li>MySQL</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+            <div class="skill-column">
+                <h3>Delivery</h3>
+                <ul>
+                    <li>Web products (Flask, HTML, CSS, JS)</li>
+                    <li>Automation with Python + Gen AI</li>
+                    <li>Workflow-focused problem solving</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tech-ribbon" aria-label="technology logos">
+            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /></a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Javascript" /></a>
+            <a href="https://www.c-language.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" /></a>
+            <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" /></a>
+            <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" /></a>
+            <a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" /></a>
+            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /></a>
+            <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" /></a>
+            <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" /></a>
         </div>
     </section>
 
-
-
-
-    </div>
-    </section>
-
-    <!-- Contact CTA Section -->
     <section id="contact-cta">
         <div class="cta-container">
-            <h2 class="cta-headline">Let's Build Something Amazing Together</h2>
-            <p class="cta-subtitle">Have a project in mind? I respond within 24 hours.</p>
-
-            <div class="cta-content">
-                <div class="cta-quick-contact">
-                    <a href="mailto:shivogojohn@gmail.com" class="btn btn-primary btn-large">
-                        <i class="fas fa-envelope"></i> Email Me
-                    </a>
-                    <a href="https://github.com/SHIVOGOJOHN" class="btn btn-secondary btn-large" target="_blank">
-                        <i class="fab fa-github"></i> View GitHub
-                    </a>
-                </div>
+            <h2 class="cta-headline">Let’s engineer your next ML workflow</h2>
+            <p class="cta-subtitle">If you need production-ready machine learning, I’m open for focused collaborations.</p>
+            <div class="cta-quick-contact">
+                <a href="mailto:shivogojohn@gmail.com" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Email me</a>
+                <a href="https://github.com/SHIVOGOJOHN" class="btn btn-secondary btn-large" target="_blank" rel="noopener noreferrer"><i
+                        class="fab fa-github"></i> Explore GitHub</a>
             </div>
         </div>
     </section>
@@ -313,8 +265,7 @@
     <footer>
         <div class="footer-links">
             <a href="tel:+254704234829" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
-            <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i
-                    class="fas fa-envelope"></i></a>
+            <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
         </div>
         <p class="titles">Machine Learning Engineer | Data Engineer | Statistician</p>
         <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
