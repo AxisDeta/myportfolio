@@ -249,3 +249,122 @@ body.signature-layout .footer-links { gap:.5rem; }
   body.signature-layout .story-row:nth-of-type(even) .story-row-media { order:0; margin-top:0; }
   body.signature-layout .hero-metrics { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
 }
+
+/* Legacy template compatibility for consistent header/footer across all pages */
+body.signature-layout .header-container {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: 1.2rem clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body.signature-layout .profile-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+body.signature-layout .header-text {
+  margin-left: 0;
+}
+
+body.signature-layout .header-text h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.3vw, 2rem);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout .header-text .job-title,
+body.signature-layout .header-text .welcome-message {
+  color: var(--muted);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* Ask AI modal: styled to match signature theme without changing JS behavior */
+body.signature-layout .ai-chat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(7, 9, 13, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+body.signature-layout .ai-chat-modal-content {
+  width: min(900px, 92vw);
+  margin: 5vh auto;
+  max-height: 90vh;
+  overflow: hidden;
+  background: #0d121b;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--fg);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+body.signature-layout .ai-chat-modal-content h2 {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+body.signature-layout .close-button {
+  position: absolute;
+  right: 1rem;
+  top: 0.7rem;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+body.signature-layout .chat-window {
+  padding: 1rem 1.2rem;
+  overflow-y: auto;
+  background: #090d14;
+}
+
+body.signature-layout .chat-message {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0.7rem;
+  padding: 0.7rem 0.8rem;
+}
+
+body.signature-layout .user-message {
+  background: #121722;
+  color: var(--fg);
+}
+
+body.signature-layout .ai-message {
+  background: #0e141f;
+  color: #d6deea;
+}
+
+body.signature-layout .chat-input-container {
+  border-top: 1px solid var(--line);
+  padding: 0.8rem;
+  background: #0d121b;
+}
+
+body.signature-layout .chat-input-container input {
+  background: #090d14;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  border-radius: 0;
+}
+
+body.signature-layout .chat-input-container button {
+  border: 1px solid var(--line);
+  background: #121722;
+  color: var(--fg);
+  border-radius: 0;
+}
