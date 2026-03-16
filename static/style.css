@@ -1319,3 +1319,205 @@ button.btn {
         height: 300px;
     }
 }
+
+/* --- Human Tech Theme Refresh --- */
+:root {
+    --bg-base: #070b14;
+    --bg-elevated: #101826;
+    --bg-panel: #121c2d;
+    --text-main: #d7e0f0;
+    --text-muted: #8fa0ba;
+    --accent: #4f8cff;
+    --accent-soft: #79f7d4;
+    --line: #253249;
+}
+
+body.human-tech-theme {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(79, 140, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 22%, rgba(121, 247, 212, 0.12), transparent 24%),
+        linear-gradient(180deg, #050911 0%, var(--bg-base) 50%, #05080f 100%);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+body.human-tech-theme::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.25;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+body.human-tech-theme header,
+body.human-tech-theme footer {
+    background: rgba(9, 14, 23, 0.86);
+    backdrop-filter: blur(8px);
+    border-color: var(--line);
+}
+
+body.human-tech-theme .header-text h1 {
+    font-weight: 750;
+    letter-spacing: 0.02em;
+}
+
+body.human-tech-theme .header-text .job-title,
+body.human-tech-theme .category-title,
+body.human-tech-theme .project h3,
+body.human-tech-theme .research-paper h3,
+body.human-tech-theme #skills .skill-column h3,
+body.human-tech-theme .tech-showcase-title {
+    color: var(--accent-soft);
+}
+
+body.human-tech-theme #hero-section {
+    min-height: 80vh;
+    background: linear-gradient(160deg, rgba(8, 13, 22, 0.9), rgba(16, 24, 38, 0.72));
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    margin: 1rem 2rem 0;
+}
+
+body.human-tech-theme .hero-headline {
+    text-shadow: none;
+    max-width: 18ch;
+    margin-inline: auto;
+}
+
+body.human-tech-theme .hero-subtitle {
+    color: var(--text-muted);
+    max-width: 62ch;
+}
+
+.hero-status-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0 auto 1.7rem;
+}
+
+.hero-status-strip span {
+    border: 1px dashed rgba(121, 247, 212, 0.45);
+    color: #b7fbe8;
+    font-size: 0.87rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background-color: rgba(20, 31, 48, 0.8);
+}
+
+.hero-status-strip i {
+    margin-right: 0.4rem;
+    font-size: 0.75rem;
+}
+
+body.human-tech-theme .impact-metrics {
+    gap: 1rem;
+}
+
+body.human-tech-theme .metric-card,
+body.human-tech-theme .project,
+body.human-tech-theme .research-paper,
+body.human-tech-theme #skills .skill-column,
+body.human-tech-theme #contact,
+body.human-tech-theme .category-container {
+    background: linear-gradient(180deg, rgba(17, 26, 41, 0.95), rgba(12, 20, 33, 0.92));
+    border-color: var(--line);
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+body.human-tech-theme .category-container {
+    border-width: 1px;
+}
+
+body.human-tech-theme .category-container:hover,
+body.human-tech-theme .project:hover,
+body.human-tech-theme .research-paper:hover,
+body.human-tech-theme #skills .skill-column:hover,
+body.human-tech-theme .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(121, 247, 212, 0.22), 0 16px 24px rgba(0, 0, 0, 0.25);
+    border-color: rgba(121, 247, 212, 0.35);
+}
+
+body.human-tech-theme .metric-number {
+    color: #a8c6ff;
+}
+
+body.human-tech-theme .metric-label,
+body.human-tech-theme .cta-subtitle,
+body.human-tech-theme .quote-author,
+body.human-tech-theme footer .copyright {
+    color: var(--text-muted);
+}
+
+body.human-tech-theme .btn {
+    background: #16243a;
+    color: #dce7ff !important;
+    border: 1px solid #2b3f61;
+    border-radius: 7px;
+}
+
+body.human-tech-theme .btn:hover {
+    background: #1d2f4a;
+    border-color: #426396;
+}
+
+body.human-tech-theme .btn-primary {
+    background: var(--accent);
+    border-color: #6ea0ff;
+    color: #051225 !important;
+    box-shadow: none;
+}
+
+body.human-tech-theme .btn-secondary {
+    color: #b8ccf7 !important;
+    border-color: #3b5684;
+    background: rgba(15, 26, 41, 0.7);
+}
+
+body.human-tech-theme #contact-cta {
+    background: linear-gradient(180deg, rgba(10, 16, 27, 0.95), rgba(8, 12, 21, 0.95));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+body.human-tech-theme .cta-headline {
+    color: #d8e5ff;
+    letter-spacing: 0.01em;
+}
+
+body.human-tech-theme .tech-showcase-divider {
+    background: linear-gradient(90deg, transparent, rgba(121, 247, 212, 0.8), transparent);
+}
+
+body.human-tech-theme .tech-icons img {
+    filter: grayscale(0.1) saturate(0.85);
+    opacity: 0.9;
+}
+
+body.human-tech-theme .tech-icons img:hover {
+    transform: scale(1.12) rotate(2deg);
+    filter: none;
+}
+
+@media (max-width: 768px) {
+    body.human-tech-theme #hero-section {
+        margin: 0.5rem 1rem 0;
+        border-radius: 14px;
+    }
+
+    .hero-status-strip {
+        justify-content: flex-start;
+    }
+
+    .hero-status-strip span {
+        font-size: 0.75rem;
+    }
+}
