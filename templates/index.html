@@ -116,34 +116,34 @@
         </section>
 
         <section id="research" class="story-research">
-            <div class="section-heading">
-                <p class="kicker">APPLIED RESEARCH</p>
-                <h2>Innovation translated into real systems</h2>
+            <div class="section-heading split">
+                <h2>Applied Research</h2>
+                <p>Research projects with the same end goal: real-world robustness, measurable value, and clear deployment pathways.</p>
             </div>
 
-            <div class="research-flow">
-                {% for paper in research_papers %}
-                <article class="research-paper research-item">
-                    <div class="research-media">
-                        {% if paper.image %}
-                        <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}" class="magnifiable">
-                        {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
-                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image" class="magnifiable">
-                        {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image" class="magnifiable">
-                        {% else %}
-                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image" class="magnifiable">
-                        {% endif %}
-                    </div>
+            {% for paper in research_papers %}
+            <article class="research-paper research-item story-row">
+                <div class="story-row-media">
+                    {% if paper.image %}
+                    <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}" class="magnifiable">
+                    {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image" class="magnifiable">
+                    {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image" class="magnifiable">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image" class="magnifiable">
+                    {% endif %}
+                </div>
+                <div class="story-row-copy">
                     <h3>{{ paper.title }}</h3>
                     <p>{{ paper.description }}</p>
                     <div class="story-actions">
                         <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read more</a>
                         <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask AI</button>
                     </div>
-                </article>
-                {% endfor %}
-            </div>
+                </div>
+            </article>
+            {% endfor %}
 
             <div class="view-all-btn-container left-align">
                 <a href="{{ url_for('all_research') }}" class="btn">View full research archive</a>
