@@ -1,0 +1,235 @@
+/* Focused homepage stylesheet to override legacy theme clutter */
+body.signature-layout {
+  --bg: #06080d;
+  --fg: #eef2f8;
+  --muted: #9ea9bb;
+  --line: #252d39;
+  margin: 0;
+  background: linear-gradient(180deg, #0a0d14 0%, #06080d 40%, #06080d 100%);
+  color: var(--fg);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.signature-layout * {
+  box-sizing: border-box;
+}
+
+body.signature-layout .overlay,
+body.signature-layout .hero-background,
+body.signature-layout .particle {
+  display: none !important;
+}
+
+body.signature-layout header,
+body.signature-layout footer {
+  background: transparent;
+  border-color: var(--line);
+}
+
+body.signature-layout .signature-header {
+  border-bottom: 1px solid var(--line);
+}
+
+body.signature-layout .signature-header-inner,
+body.signature-layout .story-hero,
+body.signature-layout .story-projects,
+body.signature-layout .story-research,
+body.signature-layout .story-skills,
+body.signature-layout .story-contact {
+  width: min(1400px, 100%);
+  margin-inline: auto;
+}
+
+body.signature-layout .signature-header-inner {
+  padding: 1.2rem clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+
+body.signature-layout .identity-block {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+body.signature-layout .profile-picture {
+  width: 76px;
+  height: 76px;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout .identity-copy h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.3vw, 2rem);
+}
+
+body.signature-layout .kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body.signature-layout .welcome-message,
+body.signature-layout .job-title {
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+}
+
+body.signature-layout .social-links-bottom,
+body.signature-layout .signature-social {
+  width: auto;
+  margin: 0;
+  gap: 0.4rem;
+}
+
+body.signature-layout .social-links-bottom .btn {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.55rem;
+  margin: 0;
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout main section {
+  margin: 0;
+  padding: clamp(2.7rem, 6vw, 5.5rem) clamp(1rem, 3vw, 2.4rem);
+}
+
+body.signature-layout .btn,
+body.signature-layout .footer-links a {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg) !important;
+  box-shadow: none !important;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+body.signature-layout .btn:hover,
+body.signature-layout .footer-links a:hover {
+  background: #121722;
+  transform: none;
+}
+
+body.signature-layout .story-hero {
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  align-items: end;
+  gap: 2rem;
+}
+
+body.signature-layout .hero-title {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+body.signature-layout .hero-lead {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+body.signature-layout .hero-metrics {
+  border-left: 1px solid var(--line);
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1rem;
+}
+
+body.signature-layout .metric-number {
+  display: block;
+  font-size: clamp(1.4rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--fg);
+}
+
+body.signature-layout .metric-label {
+  display: block;
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body.signature-layout .hero-cta { justify-content: flex-start; grid-column: 1/-1; margin-top: .7rem; }
+
+body.signature-layout .section-heading { margin-bottom: 1.8rem; }
+body.signature-layout .section-heading h2,
+body.signature-layout .story-contact h2 { margin: 0; font-size: clamp(1.7rem, 4vw, 3.4rem); }
+body.signature-layout .section-heading p,
+body.signature-layout .story-contact p { margin: .7rem 0 0; color: var(--muted); max-width: 58ch; }
+body.signature-layout .section-heading.split { display:grid; grid-template-columns:1fr 1fr; gap: 2rem; }
+
+body.signature-layout .project,
+body.signature-layout .research-paper { background: none; border: 0; box-shadow:none; padding:0; margin:0; text-align:left; }
+
+body.signature-layout .story-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) 1fr;
+  gap: 1.4rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+  margin-bottom: 3.2rem;
+}
+
+body.signature-layout .story-row:nth-of-type(even) {
+  grid-template-columns: 1fr minmax(260px, 34%);
+}
+
+body.signature-layout .story-row:nth-of-type(even) .story-row-media { order: 2; margin-top: 1.4rem; }
+body.signature-layout .story-row-media img { width:100%; display:block; filter: grayscale(.12); }
+
+body.signature-layout .story-row-copy h3,
+body.signature-layout .research-item h3 { margin:0 0 .55rem; color:var(--fg); font-size: clamp(1.1rem, 2.2vw, 1.9rem); }
+body.signature-layout .story-row-copy p,
+body.signature-layout .research-item p { margin:0; color: var(--muted); }
+
+body.signature-layout .story-actions { display:flex; gap:.55rem; flex-wrap: wrap; margin-top:.9rem; }
+body.signature-layout .left-align { text-align:left; }
+
+body.signature-layout .story-research,
+body.signature-layout .story-skills,
+body.signature-layout .story-contact { border-top: 1px solid var(--line); }
+
+body.signature-layout .research-flow { display:grid; grid-template-columns: 1.15fr .85fr; gap: 2rem; }
+body.signature-layout .research-item { border-top: 1px solid var(--line); padding-top: 1rem; }
+body.signature-layout .research-item:last-child { margin-top: 3rem; }
+
+body.signature-layout .skills-lines p { margin:0; padding:.86rem 0; border-top: 1px dashed var(--line); color:var(--muted); }
+body.signature-layout .skills-lines p strong { color: var(--fg); }
+body.signature-layout .tech-ribbon { margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap: .9rem; }
+body.signature-layout .tech-ribbon img { width: 34px; height:34px; }
+
+body.signature-layout footer { margin-top:0; border-top:1px solid var(--line); }
+body.signature-layout .footer-links { gap:.5rem; }
+
+@media (max-width: 980px) {
+  body.signature-layout .signature-header-inner,
+  body.signature-layout .story-hero,
+  body.signature-layout .section-heading.split,
+  body.signature-layout .story-row,
+  body.signature-layout .story-row:nth-of-type(even),
+  body.signature-layout .research-flow { grid-template-columns: 1fr; }
+
+  body.signature-layout .story-row:nth-of-type(even) .story-row-media { order:0; margin-top:0; }
+  body.signature-layout .hero-metrics { border-left:0; padding-left:0; }
+}
