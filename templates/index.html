@@ -124,6 +124,17 @@
             <div class="research-flow">
                 {% for paper in research_papers %}
                 <article class="research-paper research-item">
+                    <div class="research-media">
+                        {% if paper.image %}
+                        <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}" class="magnifiable">
+                        {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                        <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image" class="magnifiable">
+                        {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                        <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image" class="magnifiable">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image" class="magnifiable">
+                        {% endif %}
+                    </div>
                     <h3>{{ paper.title }}</h3>
                     <p>{{ paper.description }}</p>
                     <div class="story-actions">

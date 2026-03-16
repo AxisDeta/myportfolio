@@ -151,15 +151,20 @@ body.signature-layout .hero-metrics {
   border-left: 1px solid var(--line);
   padding-left: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem 1rem;
+  grid-template-columns: repeat(2, minmax(145px, 1fr));
+  gap: 0.9rem 1rem;
+}
+
+body.signature-layout .hero-metrics > div {
+  min-width: 0;
 }
 
 body.signature-layout .metric-number {
   display: block;
-  font-size: clamp(1.4rem, 3.4vw, 2.5rem);
+  font-size: clamp(1.35rem, 3vw, 2.35rem);
   font-weight: 700;
   color: var(--fg);
+  line-height: 1.05;
 }
 
 body.signature-layout .metric-label {
@@ -203,6 +208,16 @@ body.signature-layout .research-item h3 { margin:0 0 .55rem; color:var(--fg); fo
 body.signature-layout .story-row-copy p,
 body.signature-layout .research-item p { margin:0; color: var(--muted); }
 
+body.signature-layout .research-media {
+  margin: 0 0 0.9rem;
+}
+
+body.signature-layout .research-media img {
+  width: 100%;
+  display: block;
+  filter: grayscale(.12);
+}
+
 body.signature-layout .story-actions { display:flex; gap:.55rem; flex-wrap: wrap; margin-top:.9rem; }
 body.signature-layout .left-align { text-align:left; }
 
@@ -232,4 +247,9 @@ body.signature-layout .footer-links { gap:.5rem; }
 
   body.signature-layout .story-row:nth-of-type(even) .story-row-media { order:0; margin-top:0; }
   body.signature-layout .hero-metrics { border-left:0; padding-left:0; }
+}
+
+@media (max-width: 1200px) {
+  body.signature-layout .story-hero { grid-template-columns: 1fr; }
+  body.signature-layout .hero-metrics { border-left: 0; padding-left: 0; }
 }
