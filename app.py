@@ -163,7 +163,10 @@ def all_projects():
     # Load all projects
     _, projects_data, _ = load_data()
     # Filter out research papers just in case, though load_data already does this
-    filtered_projects = [p for p in projects_data if not p['id'].startswith('paper_')]
+    filtered_projects = [
+        p for p in projects_data
+        if not p['id'].startswith('paper_') and p.get('id') != 'ml_in_cybersec'
+    ]
     
     for p in filtered_projects:
         p['details_page'] = 'project_' + p['id'] if not p['id'].startswith('project_') else p['id']
