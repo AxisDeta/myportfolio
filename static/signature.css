@@ -291,21 +291,25 @@ body.signature-layout .ai-chat-modal {
   position: fixed;
   inset: 0;
   z-index: 1100;
+  padding: 1.25rem;
+  overflow-y: auto;
   background: rgba(7, 9, 13, 0.8);
   backdrop-filter: blur(2px);
 }
 
 body.signature-layout .ai-chat-modal-content {
-  width: min(900px, 92vw);
-  margin: 5vh auto;
-  max-height: 90vh;
+  width: min(900px, 100%);
+  margin: 0 auto;
+  height: min(86vh, 760px);
+  min-height: 360px;
   overflow: hidden;
   background: #0d121b;
   border: 1px solid var(--line);
   border-radius: 0;
   color: var(--fg);
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  position: relative;
 }
 
 body.signature-layout .ai-chat-modal-content h2 {
@@ -353,6 +357,10 @@ body.signature-layout .chat-input-container {
   border-top: 1px solid var(--line);
   padding: 0.8rem;
   background: #0d121b;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
 }
 
 body.signature-layout .chat-input-container input {
@@ -367,4 +375,22 @@ body.signature-layout .chat-input-container button {
   background: #121722;
   color: var(--fg);
   border-radius: 0;
+}
+
+@media (max-width: 640px) {
+  body.signature-layout .ai-chat-modal {
+    padding: 0.6rem;
+  }
+
+  body.signature-layout .ai-chat-modal-content {
+    height: min(92vh, 92vh);
+  }
+
+  body.signature-layout .chat-input-container {
+    grid-template-columns: 1fr;
+  }
+
+  body.signature-layout .chat-input-container button {
+    width: 100%;
+  }
 }
