@@ -11,7 +11,7 @@
     <script src="{{ url_for('static', filename='script.js') }}?v=3.0" defer></script>
 </head>
 
-<body class="human-tech-theme editorial-theme">
+<body class="human-tech-theme">
     <header>
         <div class="header-container">
             <div class="profile-container">
@@ -58,17 +58,43 @@
     {% endif %}
     {% endwith %}
 
-    <section id="hero-section" class="editorial-hero">
-        <p class="section-kicker">FIELD NOTES · ML SYSTEMS · PRODUCTION ENGINEERING</p>
-        <h1 class="hero-headline">From raw data chaos to reliable ML products.</h1>
-        <p class="hero-subtitle">I design ML systems that stay useful after launch: better observability, cleaner failure
-            modes, and shipping discipline over hype.</p>
+    <!-- Hero Section with Impact Metrics -->
+    <section id="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-headline">I Build ML Systems That Actually Work in Production</h1>
+            <p class="hero-subtitle">Specializing in taking messy, real-world data and building ML systems that ship—not
+                just notebooks that work on Kaggle.</p>
+            <div class="hero-status-strip" aria-label="engineering status">
+                <span><i class="fas fa-circle"></i> Build: stable</span>
+                <span><i class="fas fa-microchip"></i> Focus: applied ML</span>
+                <span><i class="fas fa-terminal"></i> Style: practical + curious</span>
+            </div>
 
-        <div class="hero-facts">
-            <div><span class="metric-number" data-target="{{ settings.production_models|default('8') }}">0</span><span class="metric-label">systems shipped</span></div>
-            <div><span class="metric-number" data-target="{{ settings.model_uptime|default('99.9') }}">0</span><span class="metric-label">% uptime target</span></div>
-            <div><span class="metric-number" data-target="{{ settings.client_projects|default('5') }}">0</span><span class="metric-label">client programs</span></div>
-            <div><span class="metric-number" data-target="{{ settings.years_experience|default('5') }}">0</span><span class="metric-label">years building</span></div>
+            <!-- Impact Metrics -->
+            <div class="impact-metrics">
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.production_models|default('8') }}">0</div>
+                    <div class="metric-label">Production Models</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.model_uptime|default('99.9') }}">0</div>
+                    <div class="metric-label">% Model Uptime</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.client_projects|default('5') }}">0</div>
+                    <div class="metric-label">Client Projects</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number" data-target="{{ settings.years_experience|default('5') }}">0</div>
+                    <div class="metric-label">Years Experience</div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">See My Work</a>
+                <a href="#contact-cta" class="btn btn-secondary">Let's Talk</a>
+            </div>
         </div>
 
         <div class="hero-cta">
@@ -245,7 +271,5 @@
         <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
     </footer>
 
+    <!-- AI Chat Modal Container -->
     <div id="aiChatModalContainer"></div>
-</body>
-
-</html>
