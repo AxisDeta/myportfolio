@@ -10,6 +10,7 @@ import shutil
 import time
 from datetime import datetime
 from werkzeug.utils import secure_filename
+from scholar_sync import default_settings
 
 class AdminFileOps:
     def __init__(self, base_dir):
@@ -27,18 +28,12 @@ class AdminFileOps:
         """Read settings.json"""
         try:
             if not os.path.exists(self.settings_file):
-                # Return defaults if missing
-                return {
-                    "years_experience": "5",
-                    "client_projects": "5",
-                    "production_models": "8",
-                    "model_uptime": "99.9"
-                }
+                return default_settings()
             with open(self.settings_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                return default_settings() | json.load(f)
         except Exception as e:
             print(f"Error reading settings.json: {e}")
-            return {}
+            return default_settings()
 
     def write_settings(self, settings):
         """Write to settings.json"""
