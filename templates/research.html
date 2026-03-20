@@ -15,7 +15,7 @@
     <header class="signature-header">
         <div class="signature-header-inner">
             <a href="{{ url_for('index') }}" class="identity-block" style="text-decoration: none; color: inherit;">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture" class="profile-picture magnifiable">
+                <img src="{{ profile_image_url }}" onerror="this.onerror=null;this.src='{{ profile_image_fallback_url }}'" alt="Profile Picture" class="profile-picture magnifiable">
                 <div class="identity-copy">
                     <p class="kicker">Shivogo John</p>
                     <h1>Machine Learning Engineer</h1>

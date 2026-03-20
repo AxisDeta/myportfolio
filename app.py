@@ -44,19 +44,33 @@ def load_data():
 
 def load_settings():
     """Load settings from settings.json"""
-    try:
-        if os.path.exists('settings.json'):
-            with open('settings.json') as f:
-                return json.load(f)
-    except Exception as e:
-        print(f"Error loading settings: {e}")
-    
-    # Defaults
-    return {
+    defaults = {
         "years_experience": "5",
         "client_projects": "5",
         "production_models": "8",
-        "model_uptime": "99.9"
+        "model_uptime": "99.9",
+        "profile_image_url": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=jic1XEcAAAAJ",
+        "profile_image_fallback_url": "https://avatars.githubusercontent.com/u/169674746?v=4"
+    }
+
+    try:
+        if os.path.exists('settings.json'):
+            with open('settings.json') as f:
+                return defaults | json.load(f)
+    except Exception as e:
+        print(f"Error loading settings: {e}")
+
+    return defaults
+
+
+@app.context_processor
+def inject_global_template_settings():
+    """Make shared branding settings available to every template."""
+    settings = load_settings()
+    return {
+        'settings': settings,
+        'profile_image_url': settings['profile_image_url'],
+        'profile_image_fallback_url': settings['profile_image_fallback_url']
     }
 
 @app.route('/')
@@ -598,6 +612,5 @@ def admin_update_settings():
         flash('Error updating settings.', 'error')
         
     return redirect(url_for('admin_dashboard'))
-
 
 
