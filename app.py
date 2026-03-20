@@ -3,10 +3,16 @@ import os
 import dotenv
 import sendgrid
 from sendgrid.helpers.mail import Mail
-import json
 import markdown
 import time
+from threading import Lock
 from google_ai import ask_ai_model
+from scholar_sync import (
+    DEFAULT_SYNC_TTL_SECONDS,
+    default_settings,
+    parse_iso_datetime,
+    sync_google_scholar_data,
+)
 
 dotenv.load_dotenv()
 app = Flask(__name__)
@@ -25,14 +31,15 @@ else:
     file_ops = AdminFileOps(base_dir=os.getcwd())
 
 # Import authentication module
-from admin_auth import login_required, log_admin_action
+from admin_auth import login_required, verify_password, log_admin_action
 # ======================================================================
+
+SCHOLAR_SYNC_LOCK = Lock()
 
 def load_data():
     """Load fresh data from data.json"""
     try:
-        with open('data.json') as f:
-            all_data = json.load(f)
+        all_data = file_ops.read_data()
         
         projects_data = [item for item in all_data if not item['id'].startswith('paper_')]
         research_data = [item for item in all_data if item['id'].startswith('paper_')]
@@ -42,21 +49,13 @@ def load_data():
         print(f"Error loading data: {e}")
         return [], [], []
 
+
 def load_settings():
     """Load settings from settings.json"""
-    defaults = {
-        "years_experience": "5",
-        "client_projects": "5",
-        "production_models": "8",
-        "model_uptime": "99.9",
-        "profile_image_url": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=jic1XEcAAAAJ",
-        "profile_image_fallback_url": "https://avatars.githubusercontent.com/u/169674746?v=4"
-    }
+    defaults = default_settings()
 
     try:
-        if os.path.exists('settings.json'):
-            with open('settings.json') as f:
-                return defaults | json.load(f)
+        return defaults | (file_ops.read_settings() or {})
     except Exception as e:
         print(f"Error loading settings: {e}")
 
@@ -70,8 +69,54 @@ def inject_global_template_settings():
     return {
         'settings': settings,
         'profile_image_url': settings['profile_image_url'],
-        'profile_image_fallback_url': settings['profile_image_fallback_url']
+        'profile_image_fallback_url': settings['profile_image_fallback_url'],
+        'scholar_publications': settings.get('scholar_publications', [])
     }
+
+
+def load_item_by_id(item_id):
+    """Load a single project/research item from data.json."""
+    all_data, _, _ = load_data()
+    return next((item for item in all_data if item.get('id') == item_id), None)
+
+
+def maybe_sync_scholar_data(force=False):
+    """Refresh Scholar metadata if the cache is stale or when forced."""
+    settings = file_ops.read_settings() or {}
+    settings = default_settings() | settings
+
+    if not force and not settings.get('scholar_sync_enabled', True):
+        return None
+
+    ttl_seconds = int(settings.get('scholar_sync_ttl_seconds') or DEFAULT_SYNC_TTL_SECONDS)
+    last_synced = parse_iso_datetime(settings.get('scholar_last_synced_at'))
+    if not force and last_synced:
+        age_seconds = time.time() - last_synced.timestamp()
+        if age_seconds < ttl_seconds:
+            return None
+
+    if not SCHOLAR_SYNC_LOCK.acquire(blocking=False):
+        return None
+
+    try:
+        refreshed_settings = default_settings() | (file_ops.read_settings() or {})
+        if not force and refreshed_settings.get('scholar_last_synced_at'):
+            last_synced = parse_iso_datetime(refreshed_settings.get('scholar_last_synced_at'))
+            if last_synced and (time.time() - last_synced.timestamp()) < ttl_seconds:
+                return None
+        return sync_google_scholar_data(file_ops, refreshed_settings, force=force)
+    finally:
+        SCHOLAR_SYNC_LOCK.release()
+
+
+@app.before_request
+def refresh_scholar_metadata_if_needed():
+    """Best-effort Scholar refresh for normal page loads."""
+    if request.method not in {'GET', 'HEAD'}:
+        return
+    if request.path.startswith('/static') or request.path.startswith('/admin'):
+        return
+    maybe_sync_scholar_data(force=False)
 
 @app.route('/')
 def index():
@@ -101,8 +146,7 @@ def index():
 @app.route('/ai_chat_modal/<item_id>')
 def ai_chat_modal(item_id):
     # Find item from all_data
-    all_data, _, _ = load_data()
-    item = next((item for item in all_data if item['id'] == item_id), None)
+    item = load_item_by_id(item_id)
     if not item:
         return "Item not found", 404
     return render_template('ai_chat_modal.html', item_title=item['title'], item_id=item_id)
@@ -149,8 +193,7 @@ def ask_ai():
             return jsonify({'error': 'Question is too short. Please provide more detail.'}), 400
 
         # Find the item from all_data
-        all_data, _, _ = load_data()
-        item = next((item for item in all_data if item['id'] == item_id), None)
+        item = load_item_by_id(item_id)
 
         if not item:
             return jsonify({'error': 'Item not found'}), 404
@@ -215,8 +258,7 @@ def project_dataml():
 def project_details(project_id):
     """Generic route for project details"""
     # Load data to check for custom content file
-    all_data, _, _ = load_data()
-    project = next((item for item in all_data if item['id'] == project_id), None)
+    project = load_item_by_id(project_id)
     
     if project and project.get('content_file'):
         filename = project['content_file']
@@ -271,39 +313,39 @@ def research_default():
 
 @app.route('/paper/federated_credit')
 def paper_federated_credit():
-    return render_template('paper_federated_credit.html')
+    return render_template('paper_federated_credit.html', paper=load_item_by_id('paper_federated_credit'))
 
 @app.route('/paper/causal_health')
 def paper_causal_health():
-    return render_template('paper_causal_health.html')
+    return render_template('paper_causal_health.html', paper=load_item_by_id('paper_causal_health'))
 
 @app.route('/paper/edge_ai_nas')
 def paper_edge_ai_nas():
-    return render_template('paper_edge_ai_nas.html')
+    return render_template('paper_edge_ai_nas.html', paper=load_item_by_id('paper_edge_ai_nas'))
 
 @app.route('/paper/adversarial_cybersecurity')
 def paper_adversarial_cybersecurity():
-    return render_template('paper_adversarial_cybersecurity.html')
+    return render_template('paper_adversarial_cybersecurity.html', paper=load_item_by_id('paper_adversarial_cybersecurity'))
 
 @app.route('/paper/defi_risk')
 def paper_defi_risk():
-    return render_template('paper_defi_risk.html')
+    return render_template('paper_defi_risk.html', paper=load_item_by_id('paper_defi_risk'))
 
 @app.route('/paper/low_resource_med')
 def paper_low_resource_med():
-    return render_template('paper_low_resource_med.html')
+    return render_template('paper_low_resource_med.html', paper=load_item_by_id('paper_low_resource_med'))
 
 @app.route('/paper/quantum_gnn')
 def paper_quantum_gnn():
-    return render_template('paper_quantum_gnn.html')
+    return render_template('paper_quantum_gnn.html', paper=load_item_by_id('paper_quantum_gnn'))
 
 @app.route('/paper/carbon_capture_opt')
 def paper_carbon_capture_opt():
-    return render_template('paper_carbon_capture_opt.html')
+    return render_template('paper_carbon_capture_opt.html', paper=load_item_by_id('paper_carbon_capture_opt'))
 
 @app.route('/paper/fair_explainable_credit')
 def paper_fair_explainable_credit():
-    return render_template('paper_fair_explainable_credit.html')
+    return render_template('paper_fair_explainable_credit.html', paper=load_item_by_id('paper_fair_explainable_credit'))
 
 @app.route('/api_docs')
 def api_docs():
@@ -337,12 +379,6 @@ def contact():
 
 # ============ ADMIN ROUTES ============
 
-from admin_auth import login_required, verify_password, log_admin_action
-from admin_file_ops import AdminFileOps
-
-# Initialize file operations
-file_ops = AdminFileOps(os.path.dirname(__file__))
-
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     """Admin login page"""
@@ -373,7 +409,7 @@ def admin_logout():
 def admin_dashboard():
     """Admin dashboard"""
     data = file_ops.read_data()
-    settings = file_ops.read_settings()
+    settings = default_settings() | (file_ops.read_settings() or {})
     backups = file_ops.list_backups()
     images = file_ops.list_images()
     activities = file_ops.read_activity_log(max_entries=20)  # Get last 20 activities
@@ -402,6 +438,29 @@ def admin_dashboard():
                          backups=backups[:5],  # Show last 5 backups
                          activities=activities,
                          images=images)
+
+
+@app.route('/admin/scholar/sync', methods=['POST'])
+@login_required
+def admin_sync_scholar():
+    """Force a Google Scholar sync from the admin dashboard."""
+    outcome = maybe_sync_scholar_data(force=True)
+    if outcome and outcome.updated:
+        log_admin_action(
+            f"Updated Google Scholar data ({outcome.fetched_publications} publications, "
+            f"{outcome.matched_papers} matched local papers)"
+        )
+        flash(
+            f'Google Scholar sync complete: {outcome.fetched_publications} publications fetched, '
+            f'{outcome.matched_papers} local papers updated.',
+            'success'
+        )
+    else:
+        flash(
+            f'Google Scholar sync could not complete: {(outcome.error if outcome else "sync skipped")}.',
+            'error'
+        )
+    return redirect(url_for('admin_dashboard'))
 
 @app.route('/admin/project/add', methods=['GET', 'POST'])
 @login_required
@@ -598,7 +657,8 @@ def admin_delete_image(filename):
 @login_required
 def admin_update_settings():
     """Update hero section metrics"""
-    settings = {
+    existing_settings = default_settings() | (file_ops.read_settings() or {})
+    settings = existing_settings | {
         "production_models": request.form.get('production_models'),
         "model_uptime": request.form.get('model_uptime'),
         "client_projects": request.form.get('client_projects'),
@@ -612,5 +672,3 @@ def admin_update_settings():
         flash('Error updating settings.', 'error')
         
     return redirect(url_for('admin_dashboard'))
-
-

@@ -58,6 +58,8 @@
                 <p>A full list of applied research work translated into practical systems and implementation paths.</p>
             </div>
 
+            {% include '_scholar_profile_summary.html' %}
+
             <div class="view-all-btn-container left-align" style="margin-bottom: 1.2rem;">
                 <a href="{{ url_for('index') }}" class="btn"><i class="fas fa-arrow-left"></i> Return to home</a>
             </div>
@@ -78,6 +80,13 @@
                 <div class="story-row-copy">
                     <h3>{{ paper.title }}</h3>
                     <p>{{ paper.description }}</p>
+                    {% if paper.scholar %}
+                    <p style="margin: 0.8rem 0 0; color: #b8b8d1; font-size: 0.95rem;">
+                        <strong>{{ paper.scholar.citations }}</strong> citations
+                        {% if paper.scholar.year %} · Published {{ paper.scholar.year }}{% endif %}
+                        {% if paper.scholar.venue %} · {{ paper.scholar.venue }}{% endif %}
+                    </p>
+                    {% endif %}
                     <div class="story-actions">
                         <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read more</a>
                         <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask AI</button>
@@ -85,6 +94,35 @@
                 </div>
             </article>
             {% endfor %}
+
+            {% if scholar_publications %}
+            <div style="margin-top: 2rem;">
+                <div class="section-heading split">
+                    <h2>Latest Google Scholar Publications</h2>
+                    <p>Freshly synced entries from the public Scholar profile, including citation counts.</p>
+                </div>
+                <div style="display: grid; gap: 1rem;">
+                    {% for publication in scholar_publications %}
+                    <article
+                        style="padding: 1rem 1.1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: rgba(255,255,255,0.02);">
+                        <h3 style="margin: 0 0 0.45rem;">{{ publication.title }}</h3>
+                        <p style="margin: 0; color: #b8b8d1;">{{ publication.authors }}</p>
+                        <p style="margin: 0.45rem 0 0; color: #b8b8d1;">
+                            {{ publication.citations }} citations{% if publication.year %} · {{ publication.year }}{% endif %}
+                            {% if publication.venue %} · {{ publication.venue }}{% endif %}
+                        </p>
+                        {% if publication.detail_url %}
+                        <div style="margin-top: 0.8rem;">
+                            <a href="{{ publication.detail_url }}" class="btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> View on Scholar
+                            </a>
+                        </div>
+                        {% endif %}
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
         </section>
     </main>
 

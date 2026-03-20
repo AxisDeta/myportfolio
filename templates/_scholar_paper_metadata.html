@@ -1,0 +1,40 @@
+{% if paper and paper.scholar %}
+<div
+    style="margin: 1rem 0 1.5rem; padding: 1rem 1.25rem; border: 1px solid rgba(0, 217, 255, 0.18); border-radius: 14px; background: rgba(0, 217, 255, 0.05);">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.9rem;">
+        <div style="padding: 0.6rem 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.05);">
+            <strong style="display: block; font-size: 1.2rem;">{{ paper.scholar.citations }}</strong>
+            <span style="color: #b8b8d1; font-size: 0.88rem;">Scholar citations</span>
+        </div>
+        <div style="padding: 0.6rem 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.05);">
+            <strong style="display: block; font-size: 1.2rem;">{{ paper.scholar.year or '—' }}</strong>
+            <span style="color: #b8b8d1; font-size: 0.88rem;">Publication year</span>
+        </div>
+        <div style="padding: 0.6rem 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.05);">
+            <strong style="display: block; font-size: 1rem;">{{ paper.scholar.last_synced_at or '—' }}</strong>
+            <span style="color: #b8b8d1; font-size: 0.88rem;">Last synced</span>
+        </div>
+    </div>
+    {% if paper.scholar.title %}
+    <p style="margin: 0 0 0.5rem;"><strong>Scholar title:</strong> {{ paper.scholar.title }}</p>
+    {% endif %}
+    {% if paper.scholar.authors %}
+    <p style="margin: 0 0 0.5rem;"><strong>Authors:</strong> {{ paper.scholar.authors }}</p>
+    {% endif %}
+    {% if paper.scholar.venue %}
+    <p style="margin: 0 0 0.8rem;"><strong>Venue:</strong> {{ paper.scholar.venue }}</p>
+    {% endif %}
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        {% if paper.scholar.detail_url %}
+        <a href="{{ paper.scholar.detail_url }}" class="btn" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i> View on Scholar
+        </a>
+        {% endif %}
+        {% if paper.scholar.citation_url %}
+        <a href="{{ paper.scholar.citation_url }}" class="btn" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-quote-right"></i> Citation details
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
