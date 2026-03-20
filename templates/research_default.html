@@ -12,7 +12,7 @@
     <header>
         <div class="header-container">
             <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture" class="profile-picture">
+                <img src="{{ profile_image_url }}" onerror="this.onerror=null;this.src='{{ profile_image_fallback_url }}'" alt="Profile Picture" class="profile-picture">
                 <div class="header-text">
                     <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;"><h1>Shivogo John</h1></a>
                     <p class="job-title">Machine Learning Engineer</p>
@@ -30,6 +30,7 @@
     </header>
 
     <section id="research-details">
+        {% include '_scholar_paper_metadata.html' %}
         <h1 style="text-align: center;">Coming Soon</h1>
         
         <p>This page is under construction. Please check back later for updates.</p>

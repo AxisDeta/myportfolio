@@ -10,6 +10,7 @@ import base64
 from datetime import datetime
 from github import Github, Auth, GithubException
 from dotenv import load_dotenv
+from scholar_sync import default_settings
 
 # Load environment variables
 load_dotenv()
@@ -112,11 +113,11 @@ class AdminGitHubOps:
         try:
             content = self._read_file('settings.json')
             if content:
-                return json.loads(content)
-            return {}
+                return default_settings() | json.loads(content)
+            return default_settings()
         except Exception as e:
             print(f"Error reading settings: {e}")
-            return {}
+            return default_settings()
     
     def write_settings(self, settings):
         """Write settings.json to GitHub"""
