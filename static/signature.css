@@ -433,36 +433,51 @@ body.signature-layout .chat-input-container button:hover {
 
 @media (max-width: 640px) {
   body.signature-layout #hero-section {
-    padding-top: 1.45rem;
-    padding-bottom: 1.9rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.6rem;
   }
 
   body.signature-layout .story-hero {
-    gap: 1rem;
+    gap: 0.85rem;
     align-items: start;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "kicker"
+      "title"
+      "lead"
+      "cta"
+      "metrics";
   }
 
-  body.signature-layout .kicker {
+  body.signature-layout .story-hero > .kicker {
+    grid-area: kicker;
     font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     margin-bottom: 0.2rem;
   }
 
   body.signature-layout .hero-title {
+    grid-area: title;
     font-size: clamp(1.65rem, 8.6vw, 2.3rem);
-    line-height: 1.02;
+    line-height: 0.98;
     letter-spacing: -0.01em;
+    max-width: 12.5ch;
+    text-wrap: balance;
   }
 
   body.signature-layout .hero-lead {
+    grid-area: lead;
     font-size: 0.95rem;
+    max-width: 34ch;
   }
 
   body.signature-layout .hero-cta {
+    grid-area: cta;
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
     gap: 0.45rem;
+    margin-top: 0.15rem;
   }
 
   body.signature-layout .hero-cta .btn {
@@ -471,8 +486,23 @@ body.signature-layout .chat-input-container button:hover {
   }
 
   body.signature-layout .hero-metrics {
+    grid-area: metrics;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.55rem;
+    margin-top: 0.25rem;
+    padding-top: 0.7rem;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  body.signature-layout .metric-number {
+    font-size: 1.15rem;
+  }
+
+  body.signature-layout .metric-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
   }
 
   body.signature-layout .ai-chat-modal {
@@ -506,7 +536,8 @@ body.signature-layout .chat-input-container button:hover {
 
 @media (max-width: 420px) {
   body.signature-layout .hero-title {
-    font-size: clamp(1.45rem, 8vw, 1.95rem);
+    font-size: clamp(1.42rem, 7.4vw, 1.82rem);
+    max-width: 13ch;
   }
 
   body.signature-layout .hero-metrics {
