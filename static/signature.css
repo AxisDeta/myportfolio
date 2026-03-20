@@ -1,0 +1,539 @@
+/* Focused homepage stylesheet to override legacy theme clutter */
+body.signature-layout {
+  --bg: #06080d;
+  --fg: #eef2f8;
+  --muted: #9ea9bb;
+  --line: #252d39;
+  margin: 0;
+  background: linear-gradient(180deg, #0a0d14 0%, #06080d 40%, #06080d 100%);
+  color: var(--fg);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.signature-layout * { box-sizing: border-box; }
+
+body.signature-layout .overlay,
+body.signature-layout .hero-background,
+body.signature-layout .particle { display: none !important; }
+
+body.signature-layout header,
+body.signature-layout footer {
+  background: transparent;
+  border-color: var(--line);
+}
+
+body.signature-layout .signature-header { border-bottom: 1px solid var(--line); }
+
+body.signature-layout .signature-header-inner,
+body.signature-layout .story-hero,
+body.signature-layout .story-projects,
+body.signature-layout .story-research,
+body.signature-layout .story-skills,
+body.signature-layout .story-contact {
+  width: min(1400px, 100%);
+  margin-inline: auto;
+}
+
+body.signature-layout .signature-header-inner {
+  padding: 1.2rem clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+
+body.signature-layout .identity-block {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+body.signature-layout .profile-picture {
+  width: 76px;
+  height: 76px;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout .identity-copy h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.3vw, 2rem);
+}
+
+body.signature-layout .kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body.signature-layout .welcome-message,
+body.signature-layout .job-title {
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+}
+
+body.signature-layout .social-links-bottom,
+body.signature-layout .signature-social {
+  width: auto;
+  margin: 0;
+  gap: 0.4rem;
+}
+
+body.signature-layout .social-links-bottom .btn {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.55rem;
+  margin: 0;
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout main { overflow-x: clip; }
+
+body.signature-layout main section {
+  margin: 0;
+  padding: clamp(2.7rem, 6vw, 5.5rem) clamp(1rem, 3vw, 2.4rem);
+}
+
+body.signature-layout .btn,
+body.signature-layout .footer-links a {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg) !important;
+  box-shadow: none !important;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+body.signature-layout .btn:hover,
+body.signature-layout .footer-links a:hover {
+  background: #121722;
+  transform: none;
+}
+
+body.signature-layout #hero-section {
+  min-height: auto;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+body.signature-layout .story-hero {
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  align-items: end;
+  gap: 2rem;
+}
+
+body.signature-layout .hero-title {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+body.signature-layout .hero-lead {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+body.signature-layout .hero-metrics {
+  border-left: 1px solid var(--line);
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(145px, 1fr));
+  gap: 0.9rem 1rem;
+}
+
+body.signature-layout .hero-metrics > div { min-width: 0; }
+
+body.signature-layout .metric-number {
+  display: block;
+  font-size: clamp(1.35rem, 3vw, 2.35rem);
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.05;
+}
+
+body.signature-layout .metric-label {
+  display: block;
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body.signature-layout .hero-cta {
+  justify-content: flex-start;
+  grid-column: 1/-1;
+  margin-top: .7rem;
+  flex-wrap: wrap;
+}
+
+body.signature-layout .section-heading { margin-bottom: 1.8rem; }
+body.signature-layout .section-heading h2,
+body.signature-layout .story-contact h2 { margin: 0; font-size: clamp(1.7rem, 4vw, 3.4rem); }
+body.signature-layout .section-heading p,
+body.signature-layout .story-contact p { margin: .7rem 0 0; color: var(--muted); max-width: 58ch; }
+body.signature-layout .section-heading.split { display:grid; grid-template-columns:1fr 1fr; gap: 2rem; }
+
+body.signature-layout .project,
+body.signature-layout .research-paper {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+body.signature-layout .story-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) 1fr;
+  gap: 1.4rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+  margin-bottom: 3.2rem;
+}
+
+body.signature-layout .story-row:nth-of-type(even) { grid-template-columns: 1fr minmax(260px, 34%); }
+body.signature-layout .story-row:nth-of-type(even) .story-row-media { order: 2; margin-top: 1.4rem; }
+body.signature-layout .story-row-media img { width:100%; display:block; filter: grayscale(.12); }
+
+body.signature-layout .story-row-copy h3,
+body.signature-layout .research-item h3 { margin:0 0 .55rem; color:var(--fg); font-size: clamp(1.1rem, 2.2vw, 1.9rem); }
+body.signature-layout .story-row-copy p,
+body.signature-layout .research-item p { margin:0; color: var(--muted); }
+
+body.signature-layout .story-actions { display:flex; gap:.55rem; flex-wrap: wrap; margin-top:.9rem; }
+body.signature-layout .left-align { text-align:left; }
+
+body.signature-layout .story-research,
+body.signature-layout .story-skills,
+body.signature-layout .story-contact { border-top: 1px solid var(--line); }
+
+body.signature-layout .skills-lines p { margin:0; padding:.86rem 0; border-top: 1px dashed var(--line); color:var(--muted); }
+body.signature-layout .skills-lines p strong { color: var(--fg); }
+body.signature-layout .tech-ribbon { margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap: .9rem; }
+body.signature-layout .tech-ribbon img { width: 34px; height:34px; }
+
+body.signature-layout footer { margin-top:0; border-top:1px solid var(--line); }
+body.signature-layout .footer-links { gap:.5rem; }
+
+@media (max-width: 1200px) {
+  body.signature-layout .story-hero { grid-template-columns: 1fr; }
+  body.signature-layout .hero-metrics { border-left: 0; padding-left: 0; }
+}
+
+@media (max-width: 980px) {
+  body.signature-layout .signature-header-inner,
+  body.signature-layout .story-hero,
+  body.signature-layout .section-heading.split,
+  body.signature-layout .story-row,
+  body.signature-layout .story-row:nth-of-type(even) { grid-template-columns: 1fr; }
+
+  body.signature-layout .story-row:nth-of-type(even) .story-row-media { order:0; margin-top:0; }
+  body.signature-layout .hero-metrics { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
+
+/* Legacy template compatibility for consistent header/footer across all pages */
+body.signature-layout .header-container {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: 1.2rem clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body.signature-layout .profile-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+body.signature-layout .header-text {
+  margin-left: 0;
+}
+
+body.signature-layout .header-text h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.3vw, 2rem);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+body.signature-layout .header-text .job-title,
+body.signature-layout .header-text .welcome-message {
+  color: var(--muted);
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* Ask AI modal: styled to match signature theme without changing JS behavior */
+body.signature-layout .ai-chat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  padding: 1.25rem;
+  overflow-y: auto;
+  background: rgba(7, 9, 13, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+body.signature-layout .ai-chat-modal-content {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  height: min(86vh, 760px);
+  min-height: 360px;
+  overflow: hidden;
+  background: #0d121b;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--fg);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  position: relative;
+  isolation: isolate;
+}
+
+body.signature-layout .ai-chat-modal-content h2 {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+body.signature-layout .close-button {
+  position: absolute;
+  right: 1rem;
+  top: 0.7rem;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+body.signature-layout .chat-window {
+  min-height: 0;
+  height: 100%;
+  margin: 0;
+  padding: 1rem 1.2rem;
+  overflow-y: auto;
+  background: #090d14;
+  position: relative;
+  z-index: 1;
+}
+
+body.signature-layout .chat-message {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0.7rem;
+  padding: 0.7rem 0.8rem;
+}
+
+body.signature-layout .user-message {
+  background: #121722;
+  color: var(--fg);
+}
+
+body.signature-layout .ai-message {
+  background: #0e141f;
+  color: #d6deea;
+}
+
+body.signature-layout .chat-input-container {
+  border-top: 1px solid var(--line);
+  padding: 0.8rem;
+  background: #0d121b;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+body.signature-layout .chat-input-container input {
+  background: #090d14;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  border-radius: 0;
+}
+
+body.signature-layout .chat-input-container button {
+  border: 1px solid var(--line);
+  background: #121722;
+  color: var(--fg);
+  border-radius: 0;
+}
+
+
+body.signature-layout .chat-input-container input:focus {
+  outline: none;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+body.signature-layout .chat-input-container button:hover {
+  background: #171f2d;
+}
+
+
+@media (max-width: 860px) {
+  body.signature-layout .signature-header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  body.signature-layout .hero-title {
+    font-size: clamp(1.9rem, 11vw, 3.25rem);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  body.signature-layout .hero-lead {
+    font-size: 1rem;
+  }
+
+  body.signature-layout .hero-metrics {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  body.signature-layout .story-row-media img {
+    max-height: 320px;
+    object-fit: cover;
+  }
+
+  body.signature-layout .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  body.signature-layout #hero-section {
+    padding-top: 0.95rem;
+    padding-bottom: 1.35rem;
+  }
+
+  body.signature-layout .story-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 0.72rem;
+    align-items: stretch;
+  }
+
+  body.signature-layout .story-hero > .kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    margin: 0;
+  }
+
+  body.signature-layout .hero-title {
+    font-size: clamp(1.32rem, 6.6vw, 1.78rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    max-width: none;
+    text-wrap: pretty;
+  }
+
+  body.signature-layout .hero-lead {
+    font-size: 0.9rem;
+    max-width: none;
+  }
+
+  body.signature-layout .hero-cta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.4rem;
+    margin: 0 !important;
+    animation: none;
+    clear: both;
+  }
+
+  body.signature-layout .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+    padding-block: 0.78rem;
+  }
+
+  body.signature-layout .hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 0.1rem;
+    padding-top: 0.7rem;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    width: 100%;
+  }
+
+  body.signature-layout .metric-number {
+    font-size: 1.15rem;
+  }
+
+  body.signature-layout .metric-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  body.signature-layout .ai-chat-modal {
+    padding: 0.6rem;
+  }
+
+  body.signature-layout .ai-chat-modal-content {
+    height: min(92vh, 92vh);
+  }
+
+  body.signature-layout .chat-input-container {
+    grid-template-columns: 1fr;
+  }
+
+  body.signature-layout .chat-input-container button {
+    width: 100%;
+  }
+
+  body.signature-layout .btn,
+  body.signature-layout .footer-links a {
+    letter-spacing: 0.04em;
+    font-size: 0.7rem;
+  }
+
+  body.signature-layout .ai-chat-modal-content h2 {
+    font-size: 0.86rem;
+    padding-right: 2.4rem;
+  }
+}
+
+
+@media (max-width: 420px) {
+  body.signature-layout .hero-title {
+    font-size: clamp(1.18rem, 6.2vw, 1.48rem);
+  }
+
+  body.signature-layout .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+}

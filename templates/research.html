@@ -6,82 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Research & Applications</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2.8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signature.css') }}?v=1.0">
+    <script src="{{ url_for('static', filename='script.js') }}?v=3.0" defer></script>
 </head>
 
-<body>
-    <header>
-        <div class="header-container">
-            <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture"
-                    class="profile-picture">
-                <div class="header-text">
-                    <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
-                        <h1>Shivogo John</h1>
-                    </a>
-                    <p class="job-title">Machine Learning Engineer & Researcher</p>
+<body class="signature-layout">
+    <header class="signature-header">
+        <div class="signature-header-inner">
+            <a href="{{ url_for('index') }}" class="identity-block" style="text-decoration: none; color: inherit;">
+                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture" class="profile-picture magnifiable">
+                <div class="identity-copy">
+                    <p class="kicker">Shivogo John</p>
+                    <h1>Machine Learning Engineer</h1>
                     <p class="welcome-message"><span id="typed-text"></span></p>
                 </div>
-            </div>
-            <div class="social-links-bottom">
-                <a href="https://github.com/SHIVOGOJOHN" class="btn" target="_blank" rel="noopener noreferrer"><i
-                        class="fab fa-github"></i></a>
-                <a href="mailto:shivogojohn@gmail.com" class="btn" target="_blank" rel="noopener noreferrer"><i
-                        class="fas fa-envelope"></i></a>
-                <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i
-                        class="fas fa-phone"></i></a>
-
-                <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i
-                        class="fas fa-graduation-cap"></i></a>
+            </a>
+            <div class="social-links-bottom signature-social">
+                <a href="https://github.com/SHIVOGOJOHN" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="mailto:shivogojohn@gmail.com" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+254704234829" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
+                <a href="https://medium.com/@shivogojohn" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i></a>
             </div>
         </div>
     </header>
-
-    <section id="all-research">
-        <h2 style="text-align: center;">All Research & Applications</h2>
-        <a href="{{ url_for('index') }}" class="btn" style="margin-bottom: 1rem;"><i class="fas fa-arrow-left"></i> Back
-            to Home</a>
-        <div class="grid-container">
-            {% for paper in research_papers %}
-            <div class="research-paper">
-                <div class="card-header-image">
-                    {% if paper.image %}
-                    <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}"
-                        class="magnifiable">
-                    {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
-                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image"
-                        class="magnifiable">
-                    {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
-                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image"
-                        class="magnifiable">
-                    {% else %}
-                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image"
-                        class="magnifiable">
-                    {% endif %}
-                </div>
-                <h3>{{ paper.title }}</h3>
-                <p>{{ paper.description }}</p>
-                <a href="{{ url_for('project_details', project_id=paper.id) }}" class="btn"><i
-                        class="fas fa-book-open"></i> Read More</a>
-                <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask
-                    AI</button>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    <div id="aiChatModalContainer"></div>
-
-    <footer>
-        <div class="footer-links">
-            <a href="tel:+254704234829" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
-            <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i
-                    class="fas fa-envelope"></i></a>
-        </div>
-        <p class="titles">Machine Learning Engineer | Data Engineer | Statistician</p>
-        <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
-    </footer>
-
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -96,13 +44,60 @@
             if (flashMessages) {
                 setTimeout(function () {
                     flashMessages.style.display = 'none';
-                }, 3000); // 3000 milliseconds = 3 seconds
+                }, 3000);
             }
         });
     </script>
     {% endif %}
     {% endwith %}
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <main>
+        <section id="all-research" class="story-research">
+            <div class="section-heading split">
+                <h2>All Research & Applications</h2>
+                <p>A full list of applied research work translated into practical systems and implementation paths.</p>
+            </div>
+
+            <div class="view-all-btn-container left-align" style="margin-bottom: 1.2rem;">
+                <a href="{{ url_for('index') }}" class="btn"><i class="fas fa-arrow-left"></i> Return to home</a>
+            </div>
+
+            {% for paper in research_papers %}
+            <article class="research-paper research-item story-row">
+                <div class="story-row-media">
+                    {% if paper.image %}
+                    <img src="{{ url_for('static', filename=paper.image) }}" alt="{{ paper.title }}" class="magnifiable">
+                    {% elif paper.title == 'Federated Learning with Blockchain & IPFS' %}
+                    <img src="{{ url_for('static', filename='FedBlockChainAI.png') }}" alt="Research Image" class="magnifiable">
+                    {% elif paper.title == 'Fair and Explainable Credit-Scoring under Concept Drift' %}
+                    <img src="{{ url_for('static', filename='mlops_main.png') }}" alt="Research Image" class="magnifiable">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='mlops_sub.png') }}" alt="Research Image" class="magnifiable">
+                    {% endif %}
+                </div>
+                <div class="story-row-copy">
+                    <h3>{{ paper.title }}</h3>
+                    <p>{{ paper.description }}</p>
+                    <div class="story-actions">
+                        <a href="{{ url_for(paper.details_page) }}" class="btn"><i class="fas fa-book-open"></i> Read more</a>
+                        <button class="btn ask-ai-btn" data-item-id="{{ paper.id }}"><i class="fas fa-brain"></i> Ask AI</button>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <div id="aiChatModalContainer"></div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="tel:+254704234829" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone"></i></a>
+            <a href="mailto:shivogojohn@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="titles">Machine Learning Engineer | Data Engineer | Statistician</p>
+        <p class="copyright">&copy; 2025 Shivogo John. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
