@@ -2,5 +2,19 @@
   "production_models": "8",
   "model_uptime": "99.9",
   "client_projects": "30",
-  "years_experience": "4"
+  "years_experience": "4",
+  "profile_image_url": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=jic1XEcAAAAJ",
+  "profile_image_fallback_url": "https://avatars.githubusercontent.com/u/169674746?v=4",
+  "scholar_sync_enabled": true,
+  "scholar_user_id": "jic1XEcAAAAJ",
+  "scholar_profile_url": "https://scholar.google.com/citations?user=jic1XEcAAAAJ&hl=en",
+  "scholar_sync_ttl_seconds": 21600,
+  "scholar_total_citations": "",
+  "scholar_h_index": "",
+  "scholar_i10_index": "",
+  "scholar_last_synced_at": "",
+  "scholar_sync_error": "",
+  "scholar_affiliation": "",
+  "scholar_name": "Shivogo John",
+  "scholar_publications": []
 }
