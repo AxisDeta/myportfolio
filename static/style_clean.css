@@ -1,8 +1,8 @@
-﻿body {
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
+    background-color: #0A0E27;
     color: #e0e0e0;
 }
 
@@ -11,16 +11,19 @@
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    aspect-ratio: 1/1; /* Ensure a square aspect ratio */
+    aspect-ratio: 1/1;
+    /* Ensure a square aspect ratio */
     margin-bottom: 1rem;
-    border: 3px solid #03dac6;
+    border: 3px solid #0052CC;
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.2s;
-    cursor: zoom-in; /* Indicate it's clickable */
-    transition: all 0.3s ease-in-out; /* Smooth transition for enlargement */
+    animation: fadeInSlideUp 0.5s ease-out forwards;
+    animation-delay: 0.1s;
+    cursor: zoom-in;
+    /* Indicate it's clickable */
+    transition: transform 0.2s ease-in-out;
+    /* Smooth transition for enlargement */
 }
 
 /* Lightbox styles */
@@ -39,7 +42,7 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Overlay for enlarged image */
@@ -49,13 +52,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
-    z-index: 999; /* Behind the enlarged image */
-    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Dark semi-transparent background */
+    z-index: 999;
+    /* Behind the enlarged image */
+    display: none;
+    /* Hidden by default */
 }
 
 .overlay.active {
-    display: block; /* Show when active */
+    display: block;
+    /* Show when active */
 }
 
 header {
@@ -97,19 +104,19 @@ header {
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.4s;
+    animation: fadeInSlideUp 0.5s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .header-text .job-title {
     margin: 0;
     font-size: 1.5rem;
-    color: #03dac6;
+    color: #0052CC;
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.6s;
+    animation: fadeInSlideUp 0.5s ease-out forwards;
+    animation-delay: 0.3s;
 }
 
 .header-text .welcome-message {
@@ -118,8 +125,8 @@ header {
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 0.8s;
+    animation: fadeInSlideUp 0.5s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
 .social-links-bottom {
@@ -127,27 +134,34 @@ header {
     justify-content: flex-end;
     margin-top: 1.5rem;
     width: 100%;
-    gap: 0.25rem; /* Same as footer buttons */
+    gap: 0.25rem;
+    /* Same as footer buttons */
 }
 
 .social-links-bottom .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem; /* Smaller fixed width for square button */
-    height: 2rem; /* Smaller fixed height for square button */
-    padding: 0; /* Remove padding to center icon */
+    width: 2rem;
+    /* Smaller fixed width for square button */
+    height: 2rem;
+    /* Smaller fixed height for square button */
+    padding: 0;
+    /* Remove padding to center icon */
     margin: 0 0.5rem;
     /* Animation 2: Subtle Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInSlideUp 0.8s ease-out forwards;
-    animation-delay: 1s; /* Stagger delay */
+    animation: fadeInSlideUp 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+    /* Stagger delay */
 }
 
 .social-links-bottom .btn i {
-    font-size: 1.2rem; /* Explicit font size for icon */
-    margin: 0; /* Remove any default icon margin */
+    font-size: 1.2rem;
+    /* Explicit font size for icon */
+    margin: 0;
+    /* Remove any default icon margin */
 }
 
 @keyframes fadeInSlideUp {
@@ -162,26 +176,206 @@ section {
     margin: 0 2rem;
 }
 
-/* Quote Section Styles */
-#quote-section {
-    background-color: #1e1e1e;
-    padding: 3rem;
-    border-radius: 8px;
-    border: 2px solid #03dac6;
-    box-shadow: 0 0 15px rgba(3, 218, 198, 0.5);
-    margin: 2rem auto 5rem auto; /* Top, Right, Bottom, Left */
-    max-width: 700px; /* Constrain width on all screens */
+/* Hero Section Styles */
+#hero-section {
+    position: relative;
+    min-height: 85vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0A0E27 0%, #1a1347 50%, #0A0E27 100%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-headline {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 0 30px rgba(0, 82, 204, 0.5), 0 0 60px rgba(0, 82, 204, 0.3);
+    animation: fadeInUp 0.7s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #b8b8d1;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Impact Metrics */
+.impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+    animation: fadeInUp 0.9s ease-out;
+}
+
+.metric-card {
+    background: rgba(0, 82, 204, 0.1);
+    border: 2px solid rgba(0, 82, 204, 0.3);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    border-color: #0052CC;
+    box-shadow: 0 8px 25px rgba(0, 82, 204, 0.25);
+}
+
+.metric-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #00D9FF;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 1rem;
+    color: #b8b8d1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hero CTA */
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #0052CC;
+    color: #fff !important;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
+    text-align: center;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 82, 204, 0.5);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #0052CC !important;
+    border: 2px solid #0052CC;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 82, 204, 0.1);
+    transform: translateY(-2px);
+}
+
+/* No changes to animated background particles */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #hero-section {
+        padding: 3rem 1rem;
+        min-height: auto;
+    }
+
+    .hero-container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .hero-headline {
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .impact-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 0;
+        margin: 2rem 0;
+        width: 100%;
+    }
+
+    .metric-card {
+        padding: 1.25rem 0.5rem;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .metric-number {
+        font-size: 2rem;
+    }
+
+    .metric-label {
+        font-size: 0.8rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 /* Animation 1: Scroll-triggered Fade-in styles */
 .fade-in-section {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .fade-in-section.is-visible {
@@ -196,34 +390,38 @@ section {
     margin-bottom: 1.5rem;
     border-radius: 8px;
     border: 1px solid #333;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #contact:hover {
     transform: translateY(-5px);
     /* Animation 3: Enhanced Hover Effects */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.project, .research-paper {
+.project,
+.research-paper {
     background-color: #1e1e1e;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 8px;
     border: 1px solid #333;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     text-align: center;
 }
 
-.project:hover, .research-paper:hover {
+.project:hover,
+.research-paper:hover {
     transform: translateY(-5px);
     /* Animation 3: Enhanced Hover Effects */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 16px rgba(0, 82, 204, 0.15);
+    border-color: #0052CC;
 }
 
-.project h3, .research-paper h3 {
+.project h3,
+.research-paper h3 {
     margin-top: 0;
-    color: #03dac6;
+    color: #0052CC;
     text-align: center;
 }
 
@@ -239,19 +437,21 @@ section {
     padding: 1.5rem;
     border-radius: 8px;
     border: 1px solid #333;
-    flex: 1 1 calc(20% - 1rem); /* Distribute 5 items evenly with gap */
-    min-width: 180px; /* Minimum width to prevent excessive shrinking */
-    transition: transform 0.3s ease;
+    flex: 1 1 calc(20% - 1rem);
+    /* Distribute 5 items evenly with gap */
+    min-width: 180px;
+    /* Minimum width to prevent excessive shrinking */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #skills .skill-column:hover {
     transform: translateY(-5px);
     /* Animation 3: Enhanced Hover Effects */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #skills .skill-column h3 {
-    color: #03dac6;
+    color: #0052CC;
     margin-top: 0;
     text-align: center;
 }
@@ -282,8 +482,181 @@ section {
 
 .view-all-btn-container .btn {
     display: block;
-    margin: 1.5rem auto; /* Add some vertical margin for spacing */
-    width: fit-content; /* Make the block element only as wide as its content */
+    margin: 1.5rem auto;
+    /* Add some vertical margin for spacing */
+    width: fit-content;
+    /* Make the block element only as wide as its content */
+}
+
+/* Category Container Styles */
+.category-container {
+    background-color: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(3, 218, 198, 0.2);
+}
+
+.category-title {
+    color: #0052CC;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #0052CC;
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .category-container {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Tech Showcase within My Expertise */
+.tech-showcase-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0052CC, transparent);
+    margin: 2.5rem 0 2rem 0;
+}
+
+.tech-showcase-title {
+    color: #0052CC;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.tech-icons img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: grayscale(20%);
+}
+
+.tech-icons img:hover {
+    transform: scale(1.15) rotate(4deg);
+    filter: grayscale(0%) drop-shadow(0 0 8px rgba(3, 218, 198, 0.4));
+}
+
+@media (max-width: 768px) {
+    .tech-icons img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tech-showcase-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Contact CTA Section */
+#contact-cta {
+    background: linear-gradient(135deg, #1a1347 0%, #0A0E27 100%);
+    padding: 5rem 2rem;
+    margin: 4rem 0 0 0;
+}
+
+.cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-headline {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: #b8b8d1;
+    margin-bottom: 3rem;
+}
+
+.cta-quick-contact {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-large {
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .cta-headline {
+        font-size: 1.8rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-quick-contact {
+        flex-direction: column;
+    }
+
+    .btn-large {
+        width: 100%;
+    }
+}
+
+/* Enhanced View All Button Styling */
+.view-all-btn-container .btn {
+    background: #0052CC;
+    box-shadow: 0 4px 8px rgba(0, 82, 204, 0.3);
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+}
+
+.view-all-btn-container .btn:hover {
+    box-shadow: 0 6px 12px rgba(0, 82, 204, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Scroll-triggered fade-in for category containers */
+.category-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.category-container.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Quote Section Enhancement */
+#quote-section {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+    border: 2px solid #0052CC;
+    box-shadow: 0 0 20px rgba(3, 218, 198, 0.3);
 }
 
 #learning-roadmap .roadmap-container {
@@ -299,18 +672,19 @@ section {
     border-radius: 8px;
     border: 1px solid #333;
     flex: 1;
-    min-width: 250px; /* Adjust as needed */
-    transition: transform 0.3s ease;
+    min-width: 250px;
+    /* Adjust as needed */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #learning-roadmap .roadmap-item:hover {
     transform: translateY(-5px);
     /* Animation 3: Enhanced Hover Effects */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #learning-roadmap .roadmap-item h3 {
-    color: #03dac6;
+    color: #0052CC;
     margin-top: 0;
     text-align: center;
 }
@@ -339,13 +713,15 @@ section {
     }
 
     .profile-picture {
-        margin-right: 0; /* Reset margin for mobile */
+        margin-right: 0;
+        /* Reset margin for mobile */
         margin-bottom: 1rem;
     }
 
     .header-text {
         text-align: center;
-        margin-left: 0; /* Reset margin for mobile */
+        margin-left: 0;
+        /* Reset margin for mobile */
     }
 
     .header-text h1 {
@@ -369,7 +745,8 @@ section {
         margin: 0.5rem 0.5rem;
     }
 
-    .project .btn, .research-paper .btn {
+    .project .btn,
+    .research-paper .btn {
         margin-bottom: 0.5rem;
     }
 
@@ -380,35 +757,39 @@ section {
 
     /* Quote Section Mobile Styles */
     #quote-section {
-        margin: 2rem; /* 2rem for mobile */
+        margin: 2rem;
+        /* 2rem for mobile */
     }
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
-    background-color: #03dac6;
-    color: #121212 !important; /* Ensure button text is black */
+    background-color: #0052CC;
+    color: #121212 !important;
+    /* Ensure button text is black */
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.1s ease; /* Animation 4: Button Press Feedback */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    /* Animation 4: Button Press Feedback */
 }
 
 .btn:hover {
-    background-color: #018786;
+    background-color: #006aff;
 }
 
 /* Animation 4: Button Press Feedback */
 .btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 #contact form {
     display: flex;
     flex-direction: column;
-    max-width: 500px; /* Adjust as needed */
+    max-width: 500px;
+    /* Adjust as needed */
     margin: 0;
 }
 
@@ -419,12 +800,15 @@ section {
 
     /* Quote Section PC Styles */
     #quote-section {
-        margin: 2rem auto; /* 2rem auto for PC */
-        max-width: 700px; /* Narrower for PC */
+        margin: 2rem auto;
+        /* 2rem auto for PC */
+        max-width: 700px;
+        /* Narrower for PC */
     }
 }
 
-#contact input, #contact textarea {
+#contact input,
+#contact textarea {
     background-color: #1e1e1e;
     border: 1px solid #333;
     color: #e0e0e0;
@@ -432,20 +816,24 @@ section {
     margin-bottom: 1rem;
     border-radius: 5px;
     /* Animation 5: Form Input Focus Animation */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Animation 5: Form Input Focus Animation */
-#contact input:focus, #contact textarea:focus {
+#contact input:focus,
+#contact textarea:focus {
     border-color: #03dac6;
-    box-shadow: 0 0 0 3px rgba(3, 218, 198, 0.5);
-    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(3, 218, 198, 0.4);
+    outline: none;
+    /* Remove default outline */
 }
 
 #contact button {
     cursor: pointer;
-    max-width: 200px; /* Adjust as needed */
-    margin: 0 auto; /* Center the button */
+    max-width: 200px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Center the button */
 }
 
 .btn i {
@@ -464,23 +852,33 @@ footer {
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 0.25rem; /* Restored spacing */
-    margin-bottom: 1rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .footer-links a {
-    color: #121212; /* Black icon color */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Allow margin/padding if needed for spacing between icons */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #0052CC;
+    color: #121212;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(3, 218, 198, 0.3);
 }
 
 .footer-links a:hover {
-    opacity: 0.7; /* Subtle hover effect */
+    background-color: #006aff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 14px rgba(3, 218, 198, 0.4);
 }
 
 .footer-links a i {
-    font-size: 1.5rem; /* Adjust icon size as needed */
-    margin: 0; /* Ensure no extra margin on the icon itself */
+    font-size: 1.3rem;
+    margin: 0;
 }
 
 footer .download-btn {
@@ -490,6 +888,7 @@ footer .download-btn {
 footer .titles {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+    color: #e0e0e0;
 }
 
 footer .copyright {
@@ -507,111 +906,14 @@ footer .copyright {
     margin-bottom: 2rem;
 }
 
-.tech-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.tech-icons img {
-    width: 40px;
-    height: 40px;
-    margin: 10px; /* Add margin back for spacing */
-}
-
 .tech-icons i {
     font-size: 3rem;
-    color: #03dac6;
-    transition: transform 0.3s ease;
+    color: #0052CC;
+    transition: transform 0.2s ease;
 }
 
 .tech-icons i:hover {
-    transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
-    .tech-icons img {
-        /* Calculate flex-basis for 5 columns with 1.5rem gap */
-        /* (100% - (4 * 1.5rem)) / 5 = (100% - 6rem) / 5 */
-        flex-basis: calc((100% - 6rem) / 5);
-        max-width: 100%; /* Ensure it doesn't overflow its flex-basis */
-        height: auto;
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        margin: 0; /* Remove individual margins, gap handles spacing */
-    }
-
-    .tech-icons {
-        padding: 0; /* Remove padding that might affect calc */
-    }
-
-    .tech-icons i {
-        font-size: 2rem;
-    }
-
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 1rem;
-    }
-
-    .profile-container {
-        flex-direction: column;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .profile-picture {
-        margin-right: 0; /* Reset margin for mobile */
-        margin-bottom: 1rem;
-    }
-
-    .header-text {
-        text-align: center;
-        margin-left: 0; /* Reset margin for mobile */
-    }
-
-    .header-text h1 {
-        font-size: 2rem;
-    }
-
-    .header-text .job-title {
-        font-size: 1.2rem;
-    }
-
-    .header-text .welcome-message {
-        font-size: 1rem;
-    }
-
-    .social-links-bottom {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .social-links-bottom .btn {
-        margin: 0.5rem 0.5rem;
-    }
-
-    .project .btn, .research-paper .btn {
-        margin-bottom: 0.5rem;
-    }
-
-    section {
-        padding: 1rem;
-        margin: 0 1rem;
-    }
-
-    /* Quote Section Mobile Styles */
-    #quote-section {
-        margin: 2rem; /* 2rem for mobile */
-    }
-
-    /* Disable fade-in animation on mobile */
-    .fade-in-section {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        transition: none !important;
-    }
+    transform: scale(1.15);
 }
 
 /* Quote Section Styles */
@@ -631,31 +933,39 @@ footer .copyright {
 }
 
 .quote-text {
-    font-family: 'Playfair Display', serif; /* Unique font */
+    font-family: 'Playfair Display', serif;
+    /* Unique font */
     font-size: 1.8rem;
-    color: #03dac6; /* Matching website's color theme */
+    color: #0052CC;
+    /* Matching website's color theme */
     margin-bottom: 1rem;
     position: relative;
-    padding: 0; /* Remove padding that was for pseudo-elements */
+    padding: 0;
+    /* Remove padding that was for pseudo-elements */
 }
 
 .quote-author {
     font-size: 1.1rem;
-    color: #888; /* Different shade of text color */
+    color: #888;
+    /* Different shade of text color */
 }
 
 /* Styling for links within project and research detail sections */
 #project-details a,
 #research-details a {
-    color: #03dac6; /* Accent color for links */
-    text-decoration: none; /* Remove underline by default */
-    transition: color 0.3s ease;
+    color: #0052CC;
+    /* Accent color for links */
+    text-decoration: none;
+    /* Remove underline by default */
+    transition: color 0.2s ease;
 }
 
 #project-details a:hover,
 #research-details a:hover {
-    color: #018786; /* Slightly darker accent on hover */
-    text-decoration: underline; /* Add underline on hover for better UX */
+    color: #018786;
+    /* Slightly darker accent on hover */
+    text-decoration: underline;
+    /* Add underline on hover for better UX */
 }
 
 /* Grid layout for projects and research papers */
@@ -666,7 +976,8 @@ footer .copyright {
 }
 
 .card-header-image {
-    height: 200px; /* Adjust as needed */
+    height: 200px;
+    /* Adjust as needed */
     margin-bottom: 1rem;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
@@ -682,5 +993,138 @@ footer .copyright {
 @media (max-width: 768px) {
     .grid-container {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Ensure button elements match anchor buttons exactly */
+button.btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* AI Chat Modal Styles */
+.ai-chat-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ai-chat-modal-content {
+    background-color: #1e1e1e;
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid #03dac6;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(3, 218, 198, 0.3);
+}
+
+.close-button {
+    color: #e0e0e0;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #0052CC;
+}
+
+.ai-chat-modal-content h2 {
+    color: #0052CC;
+    margin-top: 0;
+}
+
+.chat-window {
+    height: 400px;
+    overflow-y: auto;
+    background-color: #121212;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #0052CC;
+    color: #121212;
+    margin-left: auto;
+    text-align: right;
+}
+
+.ai-message {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+.typing-indicator {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input-container input {
+    flex: 1;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    padding: 0.75rem;
+    border-radius: 5px;
+    transition: border-color 0.2s ease;
+}
+
+.chat-input-container input:focus {
+    outline: none;
+    border-color: #03dac6;
+}
+
+.chat-input-container button {
+    background-color: #0052CC;
+    color: #121212;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.chat-input-container button:hover {
+    background-color: #006aff;
+}
+
+@media (max-width: 768px) {
+    .ai-chat-modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 1rem;
+    }
+
+    .chat-window {
+        height: 300px;
     }
 }
