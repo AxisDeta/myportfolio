@@ -14,7 +14,7 @@
     <header>
         <div class="header-container">
             <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/169674746?v=4" alt="Profile Picture"
+                <img src="{{ profile_image_url }}" onerror="this.onerror=null;this.src='{{ profile_image_fallback_url }}'" alt="Profile Picture"
                     class="profile-picture">
                 <div class="header-text">
                     <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">
@@ -39,6 +39,7 @@
     </header>
 
     <section id="research-details">
+        {% include '_scholar_paper_metadata.html' %}
         <a href="{{ url_for('all_research') }}" class="btn" style="margin-bottom: 1rem;"><i
                 class="fas fa-arrow-left"></i> Back to All Research Articles</a>
 

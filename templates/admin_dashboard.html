@@ -309,6 +309,93 @@
         </form>
     </div>
 
+    <div class="section">
+        <div class="section-header">
+            <h2><i class="fas fa-graduation-cap"></i> Google Scholar Sync</h2>
+            <form method="POST" action="{{ url_for('admin_sync_scholar') }}" style="margin: 0;">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-rotate"></i> Sync Now
+                </button>
+            </form>
+        </div>
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div style="background: #2a2a2a; padding: 1rem; border-radius: 8px;">
+                <small style="color: #888;">Profile</small>
+                <div style="margin-top: 0.35rem; font-weight: 600;">{{ settings.scholar_name or 'Not synced yet' }}</div>
+                {% if settings.scholar_affiliation %}
+                <div style="margin-top: 0.4rem; color: #b8b8d1; font-size: 0.9rem;">{{ settings.scholar_affiliation }}</div>
+                {% endif %}
+                <div style="margin-top: 0.75rem;">
+                    <a href="{{ settings.scholar_profile_url }}" target="_blank" rel="noopener noreferrer"
+                        style="color: #6cb6ff; text-decoration: none;">Open Scholar profile</a>
+                </div>
+            </div>
+            <div style="background: #2a2a2a; padding: 1rem; border-radius: 8px;">
+                <small style="color: #888;">Citations</small>
+                <div style="margin-top: 0.35rem; font-size: 1.5rem; font-weight: 700; color: #00D9FF;">
+                    {{ settings.scholar_total_citations or '—' }}
+                </div>
+            </div>
+            <div style="background: #2a2a2a; padding: 1rem; border-radius: 8px;">
+                <small style="color: #888;">h-index</small>
+                <div style="margin-top: 0.35rem; font-size: 1.5rem; font-weight: 700; color: #00D9FF;">
+                    {{ settings.scholar_h_index or '—' }}
+                </div>
+            </div>
+            <div style="background: #2a2a2a; padding: 1rem; border-radius: 8px;">
+                <small style="color: #888;">i10-index</small>
+                <div style="margin-top: 0.35rem; font-size: 1.5rem; font-weight: 700; color: #00D9FF;">
+                    {{ settings.scholar_i10_index or '—' }}
+                </div>
+            </div>
+        </div>
+        <div style="color: #b8b8d1; font-size: 0.92rem;">
+            <div><strong>Last synced:</strong> {{ settings.scholar_last_synced_at or 'Never' }}</div>
+            {% if settings.scholar_sync_error %}
+            <div style="margin-top: 0.5rem; color: #ff8f8f;"><strong>Last error:</strong> {{ settings.scholar_sync_error }}</div>
+            {% endif %}
+        </div>
+
+        {% if settings.scholar_publications %}
+        <div style="margin-top: 1.25rem;">
+            <h3 style="margin-bottom: 0.9rem; color: #fff;">Latest synced publications</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th style="width: 110px;">Citations</th>
+                        <th style="width: 90px;">Year</th>
+                        <th style="width: 120px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for publication in settings.scholar_publications[:5] %}
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600;">{{ publication.title }}</div>
+                            <div style="font-size: 0.85rem; color: #999; margin-top: 0.2rem;">
+                                {{ publication.authors }}
+                            </div>
+                        </td>
+                        <td>{{ publication.citations }}</td>
+                        <td>{{ publication.year or '—' }}</td>
+                        <td>
+                            {% if publication.detail_url %}
+                            <a href="{{ publication.detail_url }}" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-sm btn-secondary">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
     <!-- Recent Activity Log -->
     {% if activities %}
     <div class="section">
